@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
         if (!allowWind)
         {
             timer -= 1 * Time.deltaTime;
+
             GameManager.Instance.windIconCooldown.fillAmount = timer;
             if (timer <= 0)
             {
