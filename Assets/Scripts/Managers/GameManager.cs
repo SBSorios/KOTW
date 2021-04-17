@@ -20,24 +20,48 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public Image windIconCooldown;  
+    public Image windIconCooldown;
 
     [HideInInspector]
     public GameObject player;
     [HideInInspector]
     public PlayerController pc;
+    [HideInInspector]
+    public PlayerHealth ph;
+
+    public Transform startPOS;
+    public Transform curCheckpoint;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        pc = player.GetComponent<PlayerController>();
 
-        windIconCooldown.fillAmount = pc.windCooldownTime;
+        if (player != null)
+        {
+            pc = player.GetComponent<PlayerController>();
+            ph = player.GetComponent<PlayerHealth>();
+            PlayerStart();
+        }
+
+        if (windIconCooldown != null)
+        {
+            windIconCooldown.fillAmount = pc.windCooldownTime;
+        }
+    }
+
+    public void PlayerStart()
+    {
+        player.transform.position = startPOS.position;
+    }
+
+    public void CheckpointReset()
+    {
+        player.transform.position = curCheckpoint.position;
     }
 
 
     void Update()
     {
-        
+
     }
 }
