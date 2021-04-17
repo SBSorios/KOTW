@@ -44,6 +44,7 @@ public class ResetJump : MonoBehaviour
     private void Active()
     {
         sr.color = Color.green;
+        bottomCollider.SetActive(true);
     }
 
     private void Inactive()

@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    //public int speed;
-    public bool GameStart;
+    public float speed;
+
+    private GameObject startZone;
+    public GameObject endZone;
+
+    public bool Run;
+
+    private void Start()
+    {
+        startZone = gameObject;
+    }
 
     private void Update()
     {
-        if (GameStart)
+        if (Run)
         {
-            transform.Translate(Vector2.right * Time.deltaTime);
+            //transform.Translate(Vector2.right * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(startZone.transform.position, endZone.transform.position, speed * Time.deltaTime);
         }
     }
 
