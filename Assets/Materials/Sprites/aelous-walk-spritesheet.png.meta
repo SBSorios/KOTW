@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: 1bd458968cc41064b908d50c7c5ca5ea
+guid: a8f1bfccd78f92948beac5dcec96f61a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6495475898714008501
-    second: GreekVaseFull
+      213: 4579803167076946803
+    second: aelous-walk-spritesheet_0
   - first:
-      213: 5452482729548317007
-    second: GreekVase1Break_1
+      213: -1173470590379872470
+    second: aelous-walk-spritesheet_1
   - first:
-      213: -7015470158210651586
-    second: GreekVase1Break_2
+      213: -7350820294509436494
+    second: aelous-walk-spritesheet_2
   - first:
-      213: -3525864376061434162
-    second: GreekVase1Break_3
+      213: 5131904686565443859
+    second: aelous-walk-spritesheet_3
   - first:
-      213: 1976309765821544975
-    second: GreekVase1Break_4
+      213: -7622000383457423419
+    second: aelous-walk-spritesheet_4
   - first:
-      213: 4855599218752797274
-    second: GreekVase1Break_5
+      213: 7648339909163812541
+    second: aelous-walk-spritesheet_5
+  - first:
+      213: -6099677871815330405
+    second: aelous-walk-spritesheet_6
+  - first:
+      213: 8420139144976804530
+    second: aelous-walk-spritesheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +70,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -133,7 +139,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreekVaseFull
+      name: aelous-walk-spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37394d237babe8f30800000000000000
+      internalID: 4579803167076946803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aelous-walk-spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f2a0227bef6bfe0800000000000000
+      internalID: -1173470590379872470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aelous-walk-spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b1680273e3acf990800000000000000
+      internalID: -7350820294509436494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aelous-walk-spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31945e75f10383740800000000000000
+      internalID: 5131904686565443859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: aelous-walk-spritesheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -141,20 +231,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b445a0aa51f6bd5a0800000000000000
-      internalID: -6495475898714008501
+      spriteID: 5cf012ac807393690800000000000000
+      internalID: -7622000383457423419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreekVase1Break_1
+      name: aelous-walk-spritesheet_5
       rect:
         serializedVersion: 2
         x: 32
@@ -162,20 +252,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f410eae672c1bab40800000000000000
-      internalID: 5452482729548317007
+      spriteID: db6072fef9c542a60800000000000000
+      internalID: 7648339909163812541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreekVase1Break_2
+      name: aelous-walk-spritesheet_6
       rect:
         serializedVersion: 2
         x: 64
@@ -183,20 +273,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3a20878f0b04ae90800000000000000
-      internalID: -7015470158210651586
+      spriteID: b95f2260b47995ba0800000000000000
+      internalID: -6099677871815330405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreekVase1Break_3
+      name: aelous-walk-spritesheet_7
       rect:
         serializedVersion: 2
         x: 96
@@ -204,56 +294,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec667a2e70d911fc0800000000000000
-      internalID: -3525864376061434162
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GreekVase1Break_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0abde5d2434d6b10800000000000000
-      internalID: 1976309765821544975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GreekVase1Break_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5abc6d63cd826340800000000000000
-      internalID: 4855599218752797274
+      spriteID: 2ba24b7c0f75ad470800000000000000
+      internalID: 8420139144976804530
       vertices: []
       indices: 
       edges: []
