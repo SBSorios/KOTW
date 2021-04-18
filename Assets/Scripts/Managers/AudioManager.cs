@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!managerExists)
+        /*if (!managerExists)
         {
             managerExists = true;
             DontDestroyOnLoad(this.gameObject);
@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
-        }
+        }*/
     }
 
     public void PlayClip(AudioClip clip)

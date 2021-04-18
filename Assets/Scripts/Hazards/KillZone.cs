@@ -6,22 +6,16 @@ public class KillZone : MonoBehaviour
 {
     public float speed;
 
-    private GameObject startZone;
+    public GameObject killZone;
     public GameObject endZone;
 
-    public bool Run;
+    public bool run;
 
-    private void Start()
+    private void FixedUpdate()
     {
-        startZone = gameObject;
-    }
-
-    private void Update()
-    {
-        if (Run)
+        if (run)
         {
-            //transform.Translate(Vector2.right * Time.deltaTime);
-            transform.position = Vector2.MoveTowards(startZone.transform.position, endZone.transform.position, speed * Time.deltaTime);
+            killZone.transform.position = Vector2.MoveTowards(killZone.transform.position, endZone.transform.position, speed * Time.deltaTime);
         }
     }
 
@@ -29,8 +23,8 @@ public class KillZone : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            Debug.Log("Player Entered Killzone");
-            GameManager.Instance.ph.Damage(GameManager.Instance.ph.totalHealth);
+            Debug.Log("Player Triggered KillZone");
+            run = true;
         }
     }
 }

@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D bc;
 
     [Header("Movement Variables")]
-    public float speed;
+    public float curSpeed;
+    public float normalSpeed;
     private float moveInput;
 
     [Header("Jump Variables")]
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public GameObject windCursor;
     public bool allowWind = true;
     public float windCooldownTime = 1f;
-    public float timer;
+    private float timer = 0f;
     private Vector3 mousePosition;
 
 
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         bc = gameObject.GetComponent<BoxCollider2D>();
 
-        timer = windCooldownTime;
+        curSpeed = normalSpeed;
     }
 
     private void Update()
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
     void Controller()
     {
         moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * curSpeed, rb.velocity.y);
 
         if (moveInput > 0)
         {
@@ -166,25 +167,30 @@ public class PlayerController : MonoBehaviour
     {
         windCursor.GetComponent<SpriteRenderer>().enabled = true;
         windCursor.GetComponent<CircleCollider2D>().enabled = true;
+        windCursor.GetComponent<TrailRenderer>().enabled = true;
+
+        GameManager.Instance.windIconCooldown.enabled = false;
     }
 
     public void WindDisabled()
     {
         windCursor.GetComponent<SpriteRenderer>().enabled = false;
         windCursor.GetComponent<CircleCollider2D>().enabled = false;
+        windCursor.GetComponent<TrailRenderer>().enabled = false;
     }
 
     public void WindCooldown()
     {
         if (!allowWind)
         {
-            timer -= 1 * Time.deltaTime;
+            timer += 1 * Time.deltaTime;
 
+            GameManager.Instance.windIconCooldown.enabled = true;
             GameManager.Instance.windIconCooldown.fillAmount = timer;
-            if (timer <= 0)
+
+            if (timer >= windCooldownTime)
             {
-                timer = windCooldownTime;
-                GameManager.Instance.windIconCooldown.fillAmount = windCooldownTime;
+                timer = 0;
                 allowWind = true;
             }
         }
