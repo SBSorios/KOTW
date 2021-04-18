@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    //public int speed;
-    public bool GameStart;
+    public float speed;
 
-    private void Update()
+    public GameObject killZone;
+    public GameObject endZone;
+
+    public bool run;
+
+    private void FixedUpdate()
     {
-        if (GameStart)
+        if (run)
         {
-            transform.Translate(Vector2.right * Time.deltaTime);
+            killZone.transform.position = Vector2.MoveTowards(killZone.transform.position, endZone.transform.position, speed * Time.deltaTime);
         }
     }
 
@@ -19,8 +23,8 @@ public class KillZone : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            Debug.Log("Player Entered Killzone");
-            GameManager.Instance.ph.Damage(GameManager.Instance.ph.totalHealth);
+            Debug.Log("Player Triggered KillZone");
+            run = true;
         }
     }
 }

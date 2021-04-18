@@ -20,7 +20,11 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    [Header("UI Variables")]
+    public Canvas parentCanvas;
     public Image windIconCooldown;
+    public Camera mainCamera;
+    public Camera playerCamera;
 
     [HideInInspector]
     public GameObject player;
@@ -29,12 +33,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public PlayerHealth ph;
 
+    [Header("Gameplay Variables")]
     public Transform startPOS;
     public Transform curCheckpoint;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        playerCamera.enabled = false;
 
         if (player != null)
         {
@@ -49,6 +55,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        CursorCooldown();
+    }
+
     public void PlayerStart()
     {
         player.transform.position = startPOS.position;
@@ -59,9 +70,19 @@ public class GameManager : MonoBehaviour
         player.transform.position = curCheckpoint.position;
     }
 
-
-    void Update()
+    private void CursorCooldown()
     {
+        Vector2 movePos;
 
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            parentCanvas.transform as RectTransform,
+            Input.mousePosition, parentCanvas.worldCamera,
+            out movePos);
+
+        Vector3 mousePos = parentCanvas.transform.TransformPoint(movePos);
+
+        windIconCooldown.transform.position = mousePos;
+
+        transform.position = mousePos;
     }
 }
