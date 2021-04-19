@@ -29,4 +29,10 @@ public class ExplosionOnClick : MonoBehaviour
 
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        Debug.Log("Collision Exit!");
+        Object.Destroy(gameObject, 1.0f);
+    }
+
 }
