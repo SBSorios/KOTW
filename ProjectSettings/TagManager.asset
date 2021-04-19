@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cursor
+  - Interactable
   layers:
   - Default
   - TransparentFX
