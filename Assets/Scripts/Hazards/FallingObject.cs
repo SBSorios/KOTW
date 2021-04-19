@@ -6,6 +6,8 @@ public class FallingObject : MonoBehaviour
 {
   
     Rigidbody2D rb;
+    public bool instantKill;
+    public int damage;
 
     void Start()
     {
@@ -27,7 +29,14 @@ public class FallingObject : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Player is dead!");
+            if (instantKill)
+            {
+                GameManager.Instance.ph.Damage(GameManager.Instance.ph.totalHealth);
+            }
+            else
+            {
+                GameManager.Instance.ph.Damage(damage);
+            }
         }
     }
-   
 }
