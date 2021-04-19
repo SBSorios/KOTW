@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     public Canvas parentCanvas;
     public Image windIconCooldown;
     public Camera mainCamera;
-    public Camera playerCamera;
 
     [HideInInspector]
     public GameObject player;
@@ -40,7 +39,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerCamera.enabled = false;
 
         if (player != null)
         {
@@ -55,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         CursorCooldown();
     }
