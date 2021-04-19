@@ -7,21 +7,11 @@ public class MoveableObject : MonoBehaviour
     public bool attached;
     private GameObject cursor;
 
-    private Vector3 mousePosition;
-    private Rigidbody2D rb;
-    private Vector2 direction;
-    public float moveSpeed;
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Cursor")
         {
-            if (GameManager.Instance.wc.allowWind)
+            if (GameManager.Instance.pc.allowWind)
             {
                 cursor = col.gameObject;
                 attached = true;
@@ -33,7 +23,7 @@ public class MoveableObject : MonoBehaviour
     {
         MoveObject();
 
-        if (!GameManager.Instance.wc.allowWind)
+        if (!GameManager.Instance.pc.allowWind)
         {
             attached = false;
         }
@@ -43,12 +33,11 @@ public class MoveableObject : MonoBehaviour
     {
         if (attached)
         {
-            mousePosition = GameManager.Instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3 (mousePosition.x, mousePosition.y);
+            this.transform.parent = cursor.transform;
         }
         else
         {
-            //this.transform.parent = null;
+            this.transform.parent = null;
         }
     }
 

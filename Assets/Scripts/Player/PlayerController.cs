@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour
     private bool canDoubleJump;
     public LayerMask groundLayer;
 
-    /*[Header("Mechanic Variables")]
+    [Header("Mechanic Variables")]
     public GameObject windCursor;
     public bool allowWind = true;
     public float windCooldownTime = 1f;
     private float timer = 0f;
-    private Vector3 mousePosition;*/
+    private Vector3 mousePosition;
 
     public AudioClip jump;
 
@@ -59,8 +59,8 @@ public class PlayerController : MonoBehaviour
     {
         JumpController();
         IsGrounded();
-        /*WindMechanic();
-        WindCooldown();*/
+        WindMechanic();
+        WindCooldown();
     }
 
 
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    /*private void WindMechanic()
+    private void WindMechanic()
     {
         if (Input.GetMouseButton(0) && allowWind)
         {
@@ -211,6 +211,6 @@ public class PlayerController : MonoBehaviour
                 allowWind = true;
             }
         }
-    }*/
+    }
 }
 
