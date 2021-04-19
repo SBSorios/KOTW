@@ -452,6 +452,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314055085}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &483748859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2071810877852142203, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
+  m_PrefabInstance: {fileID: 2071810877914169737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &483748864
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483748859}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 3
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1611700390
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142204, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.61
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142204, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_LocalPosition.y

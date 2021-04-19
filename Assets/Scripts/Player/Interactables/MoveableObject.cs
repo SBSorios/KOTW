@@ -7,6 +7,8 @@ public class MoveableObject : MonoBehaviour
     public bool attached;
     private GameObject cursor;
 
+    private Vector3 mousePosition;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Cursor")
@@ -33,11 +35,13 @@ public class MoveableObject : MonoBehaviour
     {
         if (attached)
         {
-            this.transform.parent = cursor.transform;
+            mousePosition = GameManager.Instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector3(mousePosition.x, mousePosition.y);
+            //this.transform.parent = cursor.transform;
         }
         else
         {
-            this.transform.parent = null;
+            //this.transform.parent = null;
         }
     }
 
