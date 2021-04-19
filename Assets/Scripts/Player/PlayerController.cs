@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float curSpeed;
     public float normalSpeed;
     private float moveInput;
+    private Animator anim;
 
     [Header("Jump Variables")]
     public float jumpForce;
@@ -44,9 +45,10 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        sr = gameObject.GetComponent<SpriteRenderer>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        bc = gameObject.GetComponent<BoxCollider2D>();
+        sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
 
         curSpeed = normalSpeed;
     }
@@ -73,10 +75,16 @@ public class PlayerController : MonoBehaviour
         if (moveInput > 0)
         {
             sr.flipX = false;
+            anim.SetBool("Running", true);
         }
         else if (moveInput < 0)
         {
             sr.flipX = true;
+            anim.SetBool("Running", true);
+        }
+        else if(moveInput == 0)
+        {
+            anim.SetBool("Running", false);
         }
     }
 
@@ -136,10 +144,12 @@ public class PlayerController : MonoBehaviour
         if(raycastHit.collider != null)
         {
             rayColor = Color.green;
+            anim.SetBool("Grounded", true);
         }
         else
         {
             rayColor = Color.red;
+            anim.SetBool("Grounded", false);
         }
         Debug.DrawRay(bc.bounds.center + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + additionalHeight), rayColor);
         Debug.DrawRay(bc.bounds.center - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + additionalHeight), rayColor);
