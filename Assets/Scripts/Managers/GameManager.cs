@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public Canvas parentCanvas;
     public Image windIconCooldown;
     public Camera mainCamera;
+    public Vector3 mousePosition;
 
     [HideInInspector]
     public GameObject player;
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
     public PlayerController pc;
     [HideInInspector]
     public PlayerHealth ph;
+    [HideInInspector]
+    public WindController wc;
 
     [Header("Gameplay Variables")]
     public Transform startPOS;
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         if (player != null)
         {
+            wc = player.GetComponent<WindController>();
             pc = player.GetComponent<PlayerController>();
             ph = player.GetComponent<PlayerHealth>();
             PlayerStart();
@@ -49,13 +53,18 @@ public class GameManager : MonoBehaviour
 
         if (windIconCooldown != null)
         {
-            windIconCooldown.fillAmount = pc.windCooldownTime;
+            windIconCooldown.fillAmount = wc.windCooldownTime;
         }
     }
 
     public void FixedUpdate()
     {
         CursorCooldown();
+    }
+
+    public void Update()
+    {
+        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void PlayerStart()

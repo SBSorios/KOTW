@@ -49,9 +49,11 @@ MonoBehaviour:
   parentCanvas: {fileID: 664661201896671192}
   windIconCooldown: {fileID: 664661200395297787}
   mainCamera: {fileID: 664661200830460234}
+  mousePosition: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   pc: {fileID: 0}
   ph: {fileID: 0}
+  wc: {fileID: 0}
   startPOS: {fileID: 664661200289132058}
   curCheckpoint: {fileID: 0}
 --- !u!114 &664661200071786685
@@ -511,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offsets: {x: 18, y: 0, z: -10}
-  transitionSpeed: 20
+  transitionSpeed: 10
   target: {fileID: 664661201900222074}
 --- !u!81 &664661200830460237
 AudioListener:
@@ -536,6 +538,7 @@ GameObject:
   - component: {fileID: 664661200889078160}
   - component: {fileID: 664661200889078162}
   - component: {fileID: 664661200889078159}
+  - component: {fileID: 2008877549}
   m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Player
@@ -693,9 +696,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  windCursor: {fileID: 664661201122013444}
-  allowWind: 1
-  windCooldownTime: 1
   jump: {fileID: 0}
 --- !u!114 &664661200889078159
 MonoBehaviour:
@@ -711,6 +711,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 1
   curHealth: 0
+--- !u!114 &2008877549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664661200889078165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7daf33f05b2e4ea4399e39d91776d6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windCursor: {fileID: 664661201122013444}
+  allowWind: 1
+  windCooldownTime: 1
 --- !u!1 &664661201024364679
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,8 +753,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664661201024364679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.3, y: 5.0714, z: 0}
-  m_LocalScale: {x: 1, y: 20.085522, z: 1}
+  m_LocalPosition: {x: 19.3, y: 5.0242, z: 0}
+  m_LocalScale: {x: 1, y: 19.991, z: 1}
   m_Children: []
   m_Father: {fileID: 664661200777828191}
   m_RootOrder: 2
@@ -990,6 +1005,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1433504570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664661201122013444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc65d4df42f6e44936962d0cc1e563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 500
 --- !u!1 &664661201769027809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1456,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1404288986791751104, guid: a87fa76795784784e8943c0c61d04324, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a87fa76795784784e8943c0c61d04324, type: 3}
 --- !u!1 &664661201122013444 stripped
 GameObject:
