@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private float timer = 0f;
     private Vector3 mousePosition;
 
+    public AudioClip jump;
+
 
     void Awake()
     {
@@ -102,6 +104,11 @@ public class PlayerController : MonoBehaviour
                 if (IsGrounded())
                 {
                     Jump();
+
+                    if(jump != null)
+                    {
+                        AudioManager.Instance.PlayClip(jump);
+                    }
                 }
                 else
                 {

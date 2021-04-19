@@ -17,7 +17,8 @@ public class WindController : MonoBehaviour
 
     void Update()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition = GameManager.Instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
         direction = (mousePosition - transform.position).normalized;
         rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
     }
