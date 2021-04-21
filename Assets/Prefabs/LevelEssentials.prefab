@@ -52,6 +52,7 @@ MonoBehaviour:
   player: {fileID: 0}
   pc: {fileID: 0}
   ph: {fileID: 0}
+  wc: {fileID: 0}
   startPOS: {fileID: 664661200289132058}
   curCheckpoint: {fileID: 0}
 --- !u!114 &664661200071786685
@@ -536,6 +537,7 @@ GameObject:
   - component: {fileID: 664661200889078160}
   - component: {fileID: 664661200889078162}
   - component: {fileID: 664661200889078159}
+  - component: {fileID: 230537923}
   m_Layer: 8
   m_Name: PlayerBody
   m_TagString: Player
@@ -693,9 +695,6 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  windCursor: {fileID: 664661201122013444}
-  allowWind: 1
-  windCooldownTime: 1
   jump: {fileID: 0}
 --- !u!114 &664661200889078159
 MonoBehaviour:
@@ -711,6 +710,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 1
   curHealth: 0
+--- !u!114 &230537923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664661200889078165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7daf33f05b2e4ea4399e39d91776d6d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windBrush: {fileID: 664661201122013444}
+  allowWind: 1
+  windCooldownTime: 1
 --- !u!1 &664661201024364679
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +1004,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &1894584950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664661201122013444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd7938ee4839234a9163c774e4bfdd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 500
 --- !u!1 &664661201769027809
 GameObject:
   m_ObjectHideFlags: 0
