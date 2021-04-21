@@ -738,8 +738,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664661201024364679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.3, y: 5.0714, z: 0}
-  m_LocalScale: {x: 1, y: 20.085522, z: 1}
+  m_LocalPosition: {x: 19.3, y: 5.0242, z: 0}
+  m_LocalScale: {x: 1, y: 19.991, z: 1}
   m_Children: []
   m_Father: {fileID: 664661200777828191}
   m_RootOrder: 2
@@ -1341,7 +1341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665909351928459066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.16, y: -8.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 664661200889078158}
@@ -1358,7 +1358,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1404288986791751105, guid: a87fa76795784784e8943c0c61d04324, type: 3}
       propertyPath: m_Name
-      value: Wind
+      value: WindBrush
       objectReference: {fileID: 0}
     - target: {fileID: 1404288986791751105, guid: a87fa76795784784e8943c0c61d04324, type: 3}
       propertyPath: m_IsActive
@@ -1428,7 +1428,8 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1404288986791751104, guid: a87fa76795784784e8943c0c61d04324, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a87fa76795784784e8943c0c61d04324, type: 3}
 --- !u!1 &664661201122013444 stripped
 GameObject:

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public PlayerController pc;
     [HideInInspector]
     public PlayerHealth ph;
+    [HideInInspector]
+    public WindController wc;
 
     [Header("Gameplay Variables")]
     public Transform startPOS;
@@ -44,12 +46,13 @@ public class GameManager : MonoBehaviour
         {
             pc = player.GetComponent<PlayerController>();
             ph = player.GetComponent<PlayerHealth>();
+            wc = player.GetComponent<WindController>();
             PlayerStart();
         }
 
         if (windIconCooldown != null)
         {
-            windIconCooldown.fillAmount = pc.windCooldownTime;
+            windIconCooldown.fillAmount = wc.windCooldownTime;
         }
     }
 
