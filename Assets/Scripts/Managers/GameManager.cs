@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
     public Canvas parentCanvas;
     public Image windIconCooldown;
     public Camera mainCamera;
-    public Camera playerCamera;
 
     [HideInInspector]
     public GameObject player;
@@ -32,6 +31,8 @@ public class GameManager : MonoBehaviour
     public PlayerController pc;
     [HideInInspector]
     public PlayerHealth ph;
+    [HideInInspector]
+    public WindController wc;
 
     [Header("Gameplay Variables")]
     public Transform startPOS;
@@ -40,22 +41,22 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        playerCamera.enabled = false;
 
         if (player != null)
         {
             pc = player.GetComponent<PlayerController>();
             ph = player.GetComponent<PlayerHealth>();
+            wc = player.GetComponent<WindController>();
             PlayerStart();
         }
 
         if (windIconCooldown != null)
         {
-            windIconCooldown.fillAmount = pc.windCooldownTime;
+            windIconCooldown.fillAmount = wc.windCooldownTime;
         }
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         CursorCooldown();
     }

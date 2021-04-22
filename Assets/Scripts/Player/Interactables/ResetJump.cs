@@ -67,7 +67,7 @@ public class ResetJump : MonoBehaviour
 
         if(collision.gameObject.tag == "Cursor" && !activated)
         {
-            GameManager.Instance.pc.allowWind = false;
+            GameManager.Instance.wc.allowWind = false;
             activated = true;
             Debug.Log("Cursor");
         }
