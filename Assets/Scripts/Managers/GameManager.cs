@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [Header("UI Variables")]
-    public Canvas parentCanvas;
-    public Image windIconCooldown;
     public Camera mainCamera;
 
     [HideInInspector]
@@ -37,10 +35,31 @@ public class GameManager : MonoBehaviour
     [Header("Gameplay Variables")]
     public Transform startPOS;
     public Transform curCheckpoint;
+    public Vector3 respawnPoint;
 
     void Awake()
     {
+        #region Instance Check
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Object.Destroy(gameObject);
+        }
+        #endregion
+    }
+
+    public void LoadedNewScene()
+    {
+        mainCamera = Camera.main;
+    }
+
+    public void LoadedInGame()
+    {
         player = GameObject.FindGameObjectWithTag("Player");
+        startPOS = GameObject.FindGameObjectWithTag("Start").transform;
 
         if (player != null)
         {
@@ -50,15 +69,18 @@ public class GameManager : MonoBehaviour
             PlayerStart();
         }
 
-        if (windIconCooldown != null)
+        if (SaveManager.Instance.hasLoaded)
         {
-            windIconCooldown.fillAmount = wc.windCooldownTime;
-        }
-    }
+            respawnPoint = SaveManager.Instance.activeSave.respawnPosition;
+            player.transform.position = respawnPoint;
 
-    public void FixedUpdate()
-    {
-        CursorCooldown();
+            ph.lives = SaveManager.Instance.activeSave.lives;
+        }
+        else
+        {
+            SaveManager.Instance.activeSave.respawnPosition = startPOS.transform.position;
+            SaveManager.Instance.activeSave.lives = ph.lives;
+        }
     }
 
     public void PlayerStart()
@@ -69,21 +91,5 @@ public class GameManager : MonoBehaviour
     public void CheckpointReset()
     {
         player.transform.position = curCheckpoint.position;
-    }
-
-    private void CursorCooldown()
-    {
-        Vector2 movePos;
-
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            parentCanvas.transform as RectTransform,
-            Input.mousePosition, parentCanvas.worldCamera,
-            out movePos);
-
-        Vector3 mousePos = parentCanvas.transform.TransformPoint(movePos);
-
-        windIconCooldown.transform.position = mousePos;
-
-        transform.position = mousePos;
     }
 }
