@@ -38,7 +38,7 @@ public class WindController : MonoBehaviour
         windBrush.GetComponent<CircleCollider2D>().enabled = true;
         windBrush.GetComponent<TrailRenderer>().enabled = true;
 
-        GameManager.Instance.windIconCooldown.enabled = false;
+        UIManager.Instance.windIconCooldown.enabled = false;
     }
 
     public void WindDisabled()
@@ -54,8 +54,8 @@ public class WindController : MonoBehaviour
         {
             timer += 1 * Time.deltaTime;
 
-            GameManager.Instance.windIconCooldown.enabled = true;
-            GameManager.Instance.windIconCooldown.fillAmount = timer;
+            UIManager.Instance.windIconCooldown.enabled = true;
+            UIManager.Instance.windIconCooldown.fillAmount = timer;
 
             if (timer >= windCooldownTime)
             {

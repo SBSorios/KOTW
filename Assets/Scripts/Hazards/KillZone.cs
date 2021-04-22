@@ -11,6 +11,15 @@ public class KillZone : MonoBehaviour
 
     public bool run;
 
+    private void Start()
+    {
+        if (SaveManager.Instance.activeSave.reachedCheckpoint)
+        {
+            killZone.transform.position = endZone.transform.position;
+            run = false;
+        }
+    }
+
     private void FixedUpdate()
     {
         if (run)
