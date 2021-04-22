@@ -13,7 +13,7 @@ public class Hazard : MonoBehaviour
         {
             if (instantKill)
             {
-                GameManager.Instance.ph.Damage(GameManager.Instance.ph.totalHealth);
+                GameManager.Instance.ph.Death();
             }
             else
             {

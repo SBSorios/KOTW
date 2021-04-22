@@ -20,13 +20,55 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Object.Destroy(gameObject);
+        }
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        UIManager.Instance.LoadedNewScene();
+        GameManager.Instance.LoadedNewScene();
+
+        if (scene.name == "MainMenu")
+        {
+            SaveManager.Instance.inGame = false;
+            UIManager.Instance.LoadedInMenus();
+        }
+        else
+        {
+            SaveManager.Instance.activeSave.curLevelName = scene.name;
+            SaveManager.Instance.inGame = true;
+            GameManager.Instance.LoadedInGame();
+            UIManager.Instance.LoadedInGame();
+        }
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void LoadLevel(Scene level)
+    public void LoadLevel(string levelName)
     {
-        SceneManager.LoadScene(level.buildIndex);
+        SceneManager.LoadScene(levelName);
     }
 }

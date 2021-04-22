@@ -8,6 +8,9 @@ TagManager:
   - Interactable
   - Bounds
   - Ground
+  - Canvas
+  - Start
+  - Titan
   layers:
   - Default
   - TransparentFX
