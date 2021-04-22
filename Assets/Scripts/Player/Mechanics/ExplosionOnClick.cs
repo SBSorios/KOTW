@@ -5,7 +5,8 @@ using UnityEngine;
 public class ExplosionOnClick : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
+    Rigidbody2D rb;
+
   
     void Start()
     {
@@ -14,16 +15,16 @@ public class ExplosionOnClick : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (col.gameObject.tag == "Cursor")
+        if (collision.gameObject.tag == "Cursor")
         {
             Debug.Log("Impulse!");
 
-            rb.AddForce(new Vector2(40, 20), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(4000, 1000), ForceMode2D.Impulse);
             
             Object.Destroy(gameObject, 1.0f);          
-        
+
         }
 
     }

@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Cursor
   - Interactable
-  - Bounds
-  - Ground
   layers:
   - Default
   - TransparentFX

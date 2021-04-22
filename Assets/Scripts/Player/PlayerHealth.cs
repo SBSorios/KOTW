@@ -6,9 +6,6 @@ public class PlayerHealth : MonoBehaviour
 {
     private GameObject player;
 
-    public int totalLives;
-    public int curLives;
-
     public int totalHealth;
     public int curHealth;
 
@@ -16,9 +13,6 @@ public class PlayerHealth : MonoBehaviour
     {
         player = GameManager.Instance.player;
         curHealth = totalHealth;
-        curLives = totalLives;
-
-        PlayerPrefs.SetInt("Current Lives", curLives);
     }
 
     private void Update()
@@ -42,16 +36,14 @@ public class PlayerHealth : MonoBehaviour
         if(curHealth <= 0)
         {
             Debug.Log("Player Dead");
-            PlayerPrefs.SetInt("Current Lives", curLives--);
-
-            if (GameManager.Instance.curCheckpoint == null)
+            if(GameManager.Instance.curCheckpoint == null)
             {
-                Debug.Log("Total Lives Left: " + PlayerPrefs.GetInt("Current Lives"));
+                Debug.Log("Reset Level");
                 LevelManager.Instance.ResetLevel();
             }
             else
             {
-                Debug.Log("Total Lives Left: " + PlayerPrefs.GetInt("Current Lives"));
+                Debug.Log("Reset Player At Checkpoint");
                 curHealth = totalHealth;
                 GameManager.Instance.CheckpointReset();
             }

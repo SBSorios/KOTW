@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     public float curSpeed;
     public float normalSpeed;
     private float moveInput;
-    private Animator anim;
 
     [Header("Jump Variables")]
     public float jumpForce;
@@ -35,15 +34,19 @@ public class PlayerController : MonoBehaviour
     private bool canDoubleJump;
     public LayerMask groundLayer;
 
-    public AudioClip jump;
+    [Header("Mechanic Variables")]
+    public GameObject windCursor;
+    public bool allowWind = true;
+    public float windCooldownTime = 1f;
+    private float timer = 0f;
+    private Vector3 mousePosition;
 
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
-        anim = GetComponent<Animator>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        bc = gameObject.GetComponent<BoxCollider2D>();
 
         curSpeed = normalSpeed;
     }
@@ -52,6 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         JumpController();
         IsGrounded();
+        WindMechanic();
+        WindCooldown();
     }
 
 
@@ -68,16 +73,10 @@ public class PlayerController : MonoBehaviour
         if (moveInput > 0)
         {
             sr.flipX = false;
-            anim.SetBool("Running", true);
         }
         else if (moveInput < 0)
         {
             sr.flipX = true;
-            anim.SetBool("Running", true);
-        }
-        else if(moveInput == 0)
-        {
-            anim.SetBool("Running", false);
         }
     }
 
@@ -95,11 +94,6 @@ public class PlayerController : MonoBehaviour
                 if (IsGrounded())
                 {
                     Jump();
-
-                    if(jump != null)
-                    {
-                        AudioManager.Instance.PlayClip(jump);
-                    }
                 }
                 else
                 {
@@ -142,17 +136,64 @@ public class PlayerController : MonoBehaviour
         if(raycastHit.collider != null)
         {
             rayColor = Color.green;
-            anim.SetBool("Grounded", true);
         }
         else
         {
             rayColor = Color.red;
-            anim.SetBool("Grounded", false);
         }
         Debug.DrawRay(bc.bounds.center + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + additionalHeight), rayColor);
         Debug.DrawRay(bc.bounds.center - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + additionalHeight), rayColor);
         Debug.DrawRay(bc.bounds.center - new Vector3(bc.bounds.extents.x, bc.bounds.extents.y + additionalHeight), Vector2.right * (bc.bounds.extents.y + additionalHeight), rayColor);
         return raycastHit.collider != null;
+    }
+
+    private void WindMechanic()
+    {
+        if (Input.GetMouseButton(0) && allowWind)
+        {
+            WindEnabled();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            allowWind = false;
+        }
+        else
+        {
+            WindDisabled();
+        }
+    }
+
+    public void WindEnabled()
+    {
+        windCursor.GetComponent<SpriteRenderer>().enabled = true;
+        windCursor.GetComponent<CircleCollider2D>().enabled = true;
+        windCursor.GetComponent<TrailRenderer>().enabled = true;
+
+        GameManager.Instance.windIconCooldown.enabled = false;
+    }
+
+    public void WindDisabled()
+    {
+        windCursor.GetComponent<SpriteRenderer>().enabled = false;
+        windCursor.GetComponent<CircleCollider2D>().enabled = false;
+        windCursor.GetComponent<TrailRenderer>().enabled = false;
+    }
+
+    public void WindCooldown()
+    {
+        if (!allowWind)
+        {
+            timer += 1 * Time.deltaTime;
+
+            GameManager.Instance.windIconCooldown.enabled = true;
+            GameManager.Instance.windIconCooldown.fillAmount = timer;
+
+            if (timer >= windCooldownTime)
+            {
+                timer = 0;
+                allowWind = true;
+            }
+        }
     }
 }
 
