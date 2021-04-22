@@ -10,11 +10,13 @@ public class Checkpoint : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            Debug.Log("Entered Checkpoint!");
-            GameManager.Instance.curCheckpoint = resetPOS;
-            GameManager.Instance.playerCamera.enabled = true;
-            GameManager.Instance.mainCamera.enabled = false;
-            //GameManager.Instance.mainCamera.GetComponent<CameraFollow>().target = GameManager.Instance.player.transform;           
+            if(GameManager.Instance.curCheckpoint != resetPOS)
+            {
+                Debug.Log("Entered Checkpoint!");
+                GameManager.Instance.curCheckpoint = resetPOS;
+
+                GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
+            }
         }
     }
 }

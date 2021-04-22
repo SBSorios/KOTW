@@ -3,30 +3,45 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public Vector3 offsets;
+    public float transitionSpeed = 20;
+
+    [Tooltip("Assign To The KillZone Object in the TitanEnemy Object")]
     public Transform target;
-    public float smoothing = 5f;
+    private bool isChanging = false;
 
-    Vector3 offset;
-
-    void Start()
+    public void SwitchTarget(Transform newTarget)
     {
-        if(target == null)
+        isChanging = true;
+        target = newTarget;
+    }
+
+    private void FixedUpdate()
+    {
+        CheckIfPlayer();
+
+        if (!isChanging)
         {
-            target = GameObject.FindGameObjectWithTag("Player").transform; 
+            transform.position = target.position + offsets;
         }
-
-        offset = transform.position - target.position;
+        else
+        {
+            Vector3 targetCamPos = new Vector3(target.position.x + offsets.x, transform.position.y, target.position.z + offsets.z);
+            transform.position = Vector3.MoveTowards(transform.position, targetCamPos, transitionSpeed * Time.deltaTime);
+            if (transform.position == target.position + offsets)
+            {
+                isChanging = false;
+            }
+        }
     }
 
-    void Update()
+    public void CheckIfPlayer()
     {
-        Follow(target);
+        if(target == GameManager.Instance.player.transform)
+        {
+            offsets = new Vector3(0, 8, -10);
+            Debug.Log("Camera Looking At Player");
+        }
     }
 
-    void Follow(Transform obj)
-    {
-        //Vector3 targetCamPos = obj.position + offset;
-        Vector3 targetCamPos = new Vector3(target.position.x + offset.x, transform.position.y, target.position.z + offset.z);
-        transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
-    }
 }

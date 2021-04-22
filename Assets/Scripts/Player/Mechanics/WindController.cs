@@ -4,21 +4,64 @@ using UnityEngine;
 
 public class WindController : MonoBehaviour
 {
-    private Vector3 mousePosition;
-    private Rigidbody2D rb;
-    private Vector2 direction;
-    public float moveSpeed;
+    [Header("Mechanic Variables")]
+    public GameObject windBrush;
+    public bool allowWind = true;
+    public float windCooldownTime = 1f;
+    private float timer = 0f;
 
-    void Awake()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
+        WindMechanic();
+        WindCooldown();
     }
 
-
-    void Update()
+    private void WindMechanic()
     {
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = (mousePosition - transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+        if (Input.GetMouseButton(0) && allowWind)
+        {
+            WindEnabled();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            allowWind = false;
+        }
+        else
+        {
+            WindDisabled();
+        }
+    }
+
+    public void WindEnabled()
+    {
+        windBrush.GetComponent<SpriteRenderer>().enabled = true;
+        windBrush.GetComponent<CircleCollider2D>().enabled = true;
+        windBrush.GetComponent<TrailRenderer>().enabled = true;
+
+        GameManager.Instance.windIconCooldown.enabled = false;
+    }
+
+    public void WindDisabled()
+    {
+        windBrush.GetComponent<SpriteRenderer>().enabled = false;
+        windBrush.GetComponent<CircleCollider2D>().enabled = false;
+        windBrush.GetComponent<TrailRenderer>().enabled = false;
+    }
+
+    public void WindCooldown()
+    {
+        if (!allowWind)
+        {
+            timer += 1 * Time.deltaTime;
+
+            GameManager.Instance.windIconCooldown.enabled = true;
+            GameManager.Instance.windIconCooldown.fillAmount = timer;
+
+            if (timer >= windCooldownTime)
+            {
+                timer = 0;
+                allowWind = true;
+            }
+        }
     }
 }
