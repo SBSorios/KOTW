@@ -23,6 +23,7 @@ public class SaveManager : MonoBehaviour
     #endregion
 
     public SaveData activeSave;
+    public bool freshSave;
     public bool inGame;
     public bool hasLoaded;
 
@@ -58,7 +59,7 @@ public class SaveManager : MonoBehaviour
         serializer.Serialize(stream, activeSave);
         stream.Close();
 
-        Debug.Log("Saved!");
+        Debug.Log("Saved Game File At: " + stream.Name);
     }
 
     public void Load()
@@ -74,7 +75,7 @@ public class SaveManager : MonoBehaviour
 
             hasLoaded = true;
 
-            Debug.Log("Loaded!");
+            Debug.Log("Loaded");
         }
     }
 
@@ -86,7 +87,7 @@ public class SaveManager : MonoBehaviour
         {
             File.Delete(dataPath + "/" + activeSave.saveName + ".save");
 
-            Debug.Log("Deleted Save Data!");
+            Debug.Log("Deleted Save Data");
         }
     }
 }
@@ -95,9 +96,16 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
+    [Header("Save Variables")]
     public string saveName;
-    public string curLevelName;
-    public Vector3 respawnPosition;
-    public bool reachedCheckpoint;
+
+    [Header("Player Variables")]
     public int lives;
+
+    [Header("Level Variables")]
+    public string firstLevelName;
+    public string curLevelName;
+    public Vector3 spawnPosition;
+    public bool activeCheckpoint;
+
 }

@@ -39,21 +39,23 @@ public class LevelManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("OnSceneLoaded: " + scene.name);
         UIManager.Instance.LoadedNewScene();
         GameManager.Instance.LoadedNewScene();
 
-        if (scene.name == "MainMenu")
+        if (scene.name == "MainMenu" || scene.name ==  "SelectSave")
         {
-            SaveManager.Instance.inGame = false;
             UIManager.Instance.LoadedInMenus();
+
+            SaveManager.Instance.inGame = false;
         }
         else
         {
-            SaveManager.Instance.activeSave.curLevelName = scene.name;
-            SaveManager.Instance.inGame = true;
             GameManager.Instance.LoadedInGame();
             UIManager.Instance.LoadedInGame();
+
+            SaveManager.Instance.activeSave.curLevelName = scene.name;
+            SaveManager.Instance.Save();
+            SaveManager.Instance.inGame = true;
         }
     }
 

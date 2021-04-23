@@ -14,9 +14,8 @@ public class Checkpoint : MonoBehaviour
             if(GameManager.Instance.curCheckpoint != resetPOS && !triggerCheck)
             {
                 Debug.Log("Entered Checkpoint!");
-                GameManager.Instance.curCheckpoint = resetPOS;
-                SaveManager.Instance.activeSave.respawnPosition = resetPOS.transform.position;
-                SaveManager.Instance.activeSave.reachedCheckpoint = true;
+                SaveManager.Instance.activeSave.spawnPosition = resetPOS.transform.position;
+                SaveManager.Instance.activeSave.activeCheckpoint = true;
                 SaveManager.Instance.Save();
 
                 GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
