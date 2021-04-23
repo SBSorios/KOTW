@@ -22,23 +22,36 @@ public class UIManager : MonoBehaviour
 
     [Header("Main")]
     public Canvas mainCanvas;
+    public GameObject debugPanel;
+    private bool menuOpen;
 
     [Header("In Game References")]
     public GameObject inGameObjects;
     public Image windIconCooldown;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    public void Update()
+    {
+        if (SaveManager.Instance.inGame)
+        {
+            HeartCounter();
+        }
+    }
 
     public void FixedUpdate()
     {
         if (SaveManager.Instance.inGame)
         {
-            CursorCooldown();
+            CursorCooldown();        
         }
     }
 
     public void LoadedNewScene()
     {
         mainCanvas = FindObjectOfType<Canvas>();
-        mainCanvas.worldCamera = Camera.main;
+        //mainCanvas.worldCamera = Camera.main;
     }
 
     public void LoadedInMenus()
@@ -56,6 +69,30 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void HeartCounter()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < GameManager.Instance.curLives)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < GameManager.Instance.maxLives)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+    }
+
     private void CursorCooldown()
     {
         Vector2 movePos;
@@ -70,5 +107,15 @@ public class UIManager : MonoBehaviour
         windIconCooldown.transform.position = mousePos;
 
         transform.position = mousePos;
+    }
+
+    private void DebugOpen()
+    {
+        
+    }
+
+    private void DebugClose()
+    {
+
     }
 }

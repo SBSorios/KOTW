@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     [Header("UI Variables")]
     public Camera mainCamera;
 
+    [Header("Player Variables")]
+    public int maxLives;
+    public int curLives;
+
     [HideInInspector]
     public GameObject player;
     [HideInInspector]
@@ -71,15 +75,15 @@ public class GameManager : MonoBehaviour
 
         if (SaveManager.Instance.hasLoaded)
         {
-            respawnPoint = SaveManager.Instance.activeSave.respawnPosition;
+            respawnPoint = SaveManager.Instance.activeSave.spawnPosition;
             player.transform.position = respawnPoint;
-
-            ph.lives = SaveManager.Instance.activeSave.lives;
+            curLives = SaveManager.Instance.activeSave.lives;
         }
         else
         {
-            SaveManager.Instance.activeSave.respawnPosition = startPOS.transform.position;
-            SaveManager.Instance.activeSave.lives = ph.lives;
+            SaveManager.Instance.activeSave.spawnPosition = startPOS.transform.position;
+            SaveManager.Instance.activeSave.lives = maxLives;
+            ResetLives();
         }
     }
 
@@ -92,4 +96,23 @@ public class GameManager : MonoBehaviour
     {
         player.transform.position = curCheckpoint.position;
     }
+
+    public void AddLife()
+    {
+        curLives++;
+        SaveManager.Instance.activeSave.lives = curLives;
+
+    }
+
+    public void SubtractLife()
+    {
+        curLives--;
+        SaveManager.Instance.activeSave.lives = curLives;
+    }
+
+    public void ResetLives()
+    {
+        curLives = maxLives;
+    }
+
 }

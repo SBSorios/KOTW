@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class FallingObject : MonoBehaviour
 {
-  
-    Rigidbody2D rb;
-    public bool instantKill;
-    public int damage;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
+    public Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,22 +12,6 @@ public class FallingObject : MonoBehaviour
         {
             rb.isKinematic = false;
             rb.AddForce(new Vector2(0, -5), ForceMode2D.Impulse);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Player is dead!");
-            if (instantKill)
-            {
-                GameManager.Instance.ph.Damage(GameManager.Instance.ph.totalHealth);
-            }
-            else
-            {
-                GameManager.Instance.ph.Damage(damage);
-            }
         }
     }
 }

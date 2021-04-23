@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (SaveManager.Instance.hasLoaded)
         {
-            if (SaveManager.Instance.activeSave.reachedCheckpoint)
+            if (SaveManager.Instance.activeSave.activeCheckpoint)
             {
                 target = GameManager.Instance.player.transform;
             }

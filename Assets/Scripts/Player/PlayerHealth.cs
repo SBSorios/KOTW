@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int lives;
-
     public int totalHealth;
     public int curHealth;
 
     public void Heal(int amount)
     {
         curHealth += amount;
-
     }
 
     public void Damage(int amount)
@@ -29,8 +26,8 @@ public class PlayerHealth : MonoBehaviour
     {
         GameManager.Instance.player.GetComponent<SpriteRenderer>().enabled = false;
 
-        lives--;
-        SaveManager.Instance.activeSave.lives = lives;
+        GameManager.Instance.curLives--;
+        SaveManager.Instance.activeSave.lives = GameManager.Instance.curLives;
         SaveManager.Instance.Save();
 
         yield return new WaitForSeconds(.5f);
