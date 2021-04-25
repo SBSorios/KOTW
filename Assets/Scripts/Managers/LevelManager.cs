@@ -52,7 +52,6 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.Instance.LoadedInGame();
             UIManager.Instance.LoadedInGame();
-            //RatingManager.Instance.LoadedInGame();
 
             SaveManager.Instance.activeSave.curLevelName = scene.name;
             SaveManager.Instance.Save();

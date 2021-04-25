@@ -128,7 +128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7767913979817699652}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.22, y: -5.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -197,7 +197,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -217,4 +217,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggled: 0
   anim: {fileID: 7767913979550633412}
-  igniteClip: {fileID: 8300000, guid: be8f3af3cb732a949a1f0eeebb62007d, type: 3}

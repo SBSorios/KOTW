@@ -28,12 +28,14 @@ public class WindEnemy : MonoBehaviour
         // If collides with player, destroy object
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("Collided with player!");
             GameObject.Destroy(this.gameObject);
         }
 
         // If collides with cursor, destroy object
         if (collision.gameObject.tag == "Cursor")
         {
+            Debug.Log("Collided with cursor!");
             GameObject.Destroy(this.gameObject);
         }
     }

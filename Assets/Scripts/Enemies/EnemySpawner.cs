@@ -5,10 +5,9 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-    public KillZone killZone;
-
     // Choose object to spawn in the game
     public GameObject objectToSpawn;
+
 
    // Time variables
     public float minTime;
@@ -23,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Awake()
     {
+
         List<Transform> spawningPointsAsList = new List<Transform>();
 
         // Each child is considered a spawn point
@@ -52,8 +52,9 @@ public class EnemySpawner : MonoBehaviour
 
 
         // Check if its the right time to spawn the object
-        if (curTime >= spawnTime && killZone.run)
+        if (curTime >= spawnTime)
         {
+
             SpawnObject();
             SetRandomTime();
             curTime = 0;

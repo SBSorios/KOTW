@@ -21,6 +21,19 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource audioSource;
 
+    private void Awake()
+    {
+        /*if (!managerExists)
+        {
+            managerExists = true;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }*/
+    }
+
     public void PlayClip(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
