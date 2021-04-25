@@ -6,6 +6,7 @@ public class ToggleObject : MonoBehaviour
 {
     public bool toggled;
     public Animator anim;
+    public AudioClip igniteClip;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -15,6 +16,7 @@ public class ToggleObject : MonoBehaviour
             {
                 toggled = true;
                 anim.SetBool("Toggled", toggled);
+                AudioManager.Instance.PlayClip(igniteClip);
             }
         }
     }
