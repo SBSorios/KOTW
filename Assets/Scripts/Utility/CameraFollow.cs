@@ -4,6 +4,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Vector3 offsets;
+    public Vector3 playerOffsets;
     public float transitionSpeed = 20;
 
     public Transform target;
@@ -55,7 +56,7 @@ public class CameraFollow : MonoBehaviour
     {
         if(target == GameManager.Instance.player.transform && !playerCheck)
         {
-            offsets = new Vector3(0, 8, -10);
+            offsets = playerOffsets;
             playerCheck = true;
         }
     }

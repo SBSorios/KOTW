@@ -61,8 +61,8 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 11.195027
-  m_Depth: -1
+  orthographic size: 5.6
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -89,7 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7e1bc7c983f6a4ba657f5fb063c5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsets: {x: 18, y: 0, z: -10}
+  offsets: {x: 10.42, y: 0.11, z: -10}
+  playerOffsets: {x: 0, y: 4.2, z: -10}
   transitionSpeed: 20
   target: {fileID: 0}
 --- !u!81 &4569135412855363553
@@ -112,11 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
+  m_AssetsPPU: 32
   m_RefResolutionX: 640
   m_RefResolutionY: 360
   m_UpscaleRT: 0
-  m_PixelSnapping: 0
+  m_PixelSnapping: 1
   m_CropFrameX: 1
   m_CropFrameY: 1
   m_StretchFill: 1
