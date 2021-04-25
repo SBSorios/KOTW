@@ -6,14 +6,19 @@ public class ToggleAffect : MonoBehaviour
 {
     public ToggleObject[] toggles;
     public GameObject reward;
+    public AudioClip unlockedClip;
+
+    private bool finishedToggling;
 
     private void Update()
     {
         AllToggled();
 
-        if (AllToggled() == true)
+        if (AllToggled() == true && !finishedToggling)
         {
             reward.SetActive(true);
+            AudioManager.Instance.PlayClip(unlockedClip);
+            finishedToggling = true;
         }
     }
 

@@ -115,4 +115,13 @@ public class GameManager : MonoBehaviour
         curLives = maxLives;
     }
 
+    public void LoseCondition()
+    {
+        if (curLives <= 0)
+        {
+            LevelManager.Instance.LoadLevel("LoseScene");
+        }
+    }
+
+
 }
