@@ -107,5 +107,4 @@ public class SaveData
     public string curLevelName;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
-
 }
