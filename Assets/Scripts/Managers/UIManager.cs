@@ -29,8 +29,11 @@ public class UIManager : MonoBehaviour
     public GameObject inGameObjects;
     public Image windIconCooldown;
     public Image[] hearts;
+    public Image[] stars;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public Sprite fullStar;
+    public Sprite emptyStar;
 
     public void Update()
     {

@@ -25,6 +25,13 @@ public class KillZone : MonoBehaviour
         if (run)
         {
             killZone.transform.position = Vector2.MoveTowards(killZone.transform.position, endZone.transform.position, speed * Time.deltaTime);
+
+            if (killZone.transform.position.x == endZone.transform.position.x)
+            {
+                run = false;
+                Debug.Log("Safe, for now...");
+            }
+
         }
     }
 
