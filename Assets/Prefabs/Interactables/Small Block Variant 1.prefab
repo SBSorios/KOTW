@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8858798465632487691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193477283193636877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ac1c07bb49d154ca227a46fb5e9b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &4141797590112181955
 Rigidbody2D:
   serializedVersion: 4
@@ -21,31 +33,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5645702898388219342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193477283193636877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db718b4b7f35c7e47ad14a64a9336fff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundbyte: {fileID: 8300000, guid: ea73084b8f42f3a4eb6b61546a36ca9b, type: 3}
---- !u!114 &8858798465632487691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193477283193636877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6ac1c07bb49d154ca227a46fb5e9b90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7157706233716900470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -131,31 +118,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.w
-      value: 0.3125
+      value: 0.15625
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.x
-      value: 0.375
+      value: 0.1875
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.y
-      value: 0.3125
+      value: 0.15625
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.z
-      value: 0.375
+      value: 0.1875
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.5
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2071810877852142202, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
-    - {fileID: 2675883023984001502, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
 --- !u!1 &9193477283193636877 stripped
 GameObject:
