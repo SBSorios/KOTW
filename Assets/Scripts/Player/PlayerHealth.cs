@@ -33,7 +33,17 @@ public class PlayerHealth : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        LevelManager.Instance.ResetLevel();
+        if (GameManager.Instance.curLives <= 0)
+        {
+            LevelManager.Instance.LoadLevel("LoseScene");
+            //Change Later
+            SaveManager.Instance.activeSave.lives = GameManager.Instance.maxLives;
+            GameManager.Instance.ResetLives();
+        }
+        else
+        {
+            LevelManager.Instance.ResetLevel();
+        }
     }
 
 
