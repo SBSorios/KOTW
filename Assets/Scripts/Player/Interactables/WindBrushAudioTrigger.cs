@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WindBrushPushAudioTrigger : MonoBehaviour
+public class WindBrushAudioTrigger : MonoBehaviour
 {
     public AudioClip soundbyte;
     // Start is called before the first frame update
