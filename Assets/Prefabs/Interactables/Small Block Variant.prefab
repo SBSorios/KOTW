@@ -85,28 +85,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.w
-      value: 0.15625
+      value: 0.3125
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.x
-      value: 0.1875
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.y
-      value: 0.15625
+      value: 0.3125
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.border.z
-      value: 0.1875
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.25
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2071810877852142207, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.25
+      value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2675883023984001502, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
+      propertyPath: soundbyte
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e10c55caeda9a144ae9b5d0ed14ab53, type: 3}
     m_RemovedComponents:
     - {fileID: 2071810877852142202, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9827cadbb162a09469c2b9e3b97dcee5, type: 3}
