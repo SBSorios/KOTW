@@ -5,6 +5,7 @@ using UnityEngine;
 public class FallingObject : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public AudioClip soundbyte;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +13,7 @@ public class FallingObject : MonoBehaviour
         {
             rb.isKinematic = false;
             rb.AddForce(new Vector2(0, -5), ForceMode2D.Impulse);
+            AudioManager.Instance.PlayClip(soundbyte);
         }
     }
 }
