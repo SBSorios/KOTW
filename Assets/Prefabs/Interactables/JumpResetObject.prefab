@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 1253236799272341318}
   - component: {fileID: 1253236799272341316}
   - component: {fileID: 1253236799272341315}
-  - component: {fileID: 2444833287954161623}
+  - component: {fileID: 3108286296504883004}
   m_Layer: 0
   m_Name: JumpResetObject
   m_TagString: Untagged
@@ -184,7 +184,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7464692, y: 0.24968338}
   m_EdgeRadius: 0
---- !u!114 &2444833287954161623
+--- !u!114 &3108286296504883004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1253236799272341320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db718b4b7f35c7e47ad14a64a9336fff, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cc105df6cf4fff4f8d5551ea7233684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soundbyte: {fileID: 8300000, guid: 9083f6163d8650b42b4ab5e8148afc90, type: 3}
