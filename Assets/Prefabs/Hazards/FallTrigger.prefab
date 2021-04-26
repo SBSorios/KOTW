@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2328466167107749208}
+  soundbyte: {fileID: 8300000, guid: 110084d1902e40f4f8d451b98c4cfb6f, type: 3}
 --- !u!61 &8585347187023554419
 BoxCollider2D:
   m_ObjectHideFlags: 0

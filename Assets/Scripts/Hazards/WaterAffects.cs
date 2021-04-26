@@ -8,6 +8,7 @@ public class WaterAffects : MonoBehaviour
     public int slowedSpeed;
     public float dryTime;
     private float timer;
+    public AudioClip soundbyte;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class WaterAffects : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             wet = true;
+            AudioManager.Instance.PlayClip(soundbyte);
         }
     }
 
