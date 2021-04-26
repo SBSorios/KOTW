@@ -120,9 +120,6 @@ public class GameManager : MonoBehaviour
         if (curLives <= 0)
         {
             LevelManager.Instance.LoadLevel("LoseScene");
-            //Change Later
-            SaveManager.Instance.activeSave.lives = maxLives;
-            ResetLives();
         }
     }
 

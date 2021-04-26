@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.LoadedNewScene();
         GameManager.Instance.LoadedNewScene();
 
-        if (scene.name == "MainMenu" || scene.name ==  "SelectSave" || scene.name == "WinScene" || scene.name == "LoseScene")
+        if (scene.name == "MainMenu" || scene.name ==  "SelectSave")
         {
             UIManager.Instance.LoadedInMenus();
 
