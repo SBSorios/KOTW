@@ -16,6 +16,10 @@ public class EnemySpawner : MonoBehaviour
     private float curTime;
     private float spawnTime;
 
+    // Audio
+    public AudioSource randomClip;
+    public AudioClip[] audioSources;
+
 
     // Spawnpoints 
     private Transform[] spawnPoints;
@@ -81,5 +85,19 @@ public class EnemySpawner : MonoBehaviour
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation
         Instantiate(objectToSpawn, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
+        // Play random sound
+        RandomSound();
+        
+
     }
+
+
+    void RandomSound()
+    {
+        randomClip.clip = audioSources[Random.Range(0, audioSources.Length)];
+        randomClip.Play();
+        Debug.Log("Played Sound!");
+    }
+ 
+  
 }
