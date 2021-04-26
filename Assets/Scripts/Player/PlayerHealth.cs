@@ -25,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator Respawn()
     {
         GameManager.Instance.player.GetComponent<SpriteRenderer>().enabled = false;
+        GameManager.Instance.player.GetComponent<BoxCollider2D>().enabled = false;
 
         GameManager.Instance.curLives--;
         SaveManager.Instance.activeSave.lives = GameManager.Instance.curLives;

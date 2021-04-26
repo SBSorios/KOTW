@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7847263821786771994, guid: 1224396c31a39b743a2b81ff898270de, type: 3}
+  m_Sprite: {fileID: 7815371044791450175, guid: ec2e4270b3e3e4f458b49640c9b3e594, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.037996292, y: 0.00420928}
+  m_Offset: {x: 0.032482624, y: 0.0014526844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -175,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7019067, y: 0.99092245}
+  m_Size: {x: 0.8121786, y: 0.99643564}
   m_EdgeRadius: 0
 --- !u!50 &5857883952714272099
 Rigidbody2D:
@@ -274,7 +274,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5857883953550597620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -286,7 +286,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9d04f8201770e9145a95e1d46c29f403, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -315,8 +315,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.00983429
-        value: 1
+        time: 0
+        value: 0.5
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -472,7 +472,7 @@ PrefabInstance:
     - target: {fileID: 1404288986791751110, guid: a87fa76795784784e8943c0c61d04324, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 39876e96ae510aa46b4e43393dff18e3, type: 3}
+      objectReference: {fileID: 21300000, guid: d9ba451f299f5bd4d8a586fd8d54823f, type: 3}
     - target: {fileID: 1404288986791751111, guid: a87fa76795784784e8943c0c61d04324, type: 3}
       propertyPath: m_IsTrigger
       value: 1
