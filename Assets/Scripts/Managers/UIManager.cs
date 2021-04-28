@@ -23,7 +23,9 @@ public class UIManager : MonoBehaviour
     [Header("Main")]
     public Canvas mainCanvas;
     public GameObject debugPanel;
-    private bool menuOpen;
+    public GameObject pausePanel;
+    private bool debugging = false;
+    private bool paused = false;
 
     [Header("In Game References")]
     public GameObject inGameObjects;
@@ -41,6 +43,8 @@ public class UIManager : MonoBehaviour
         {
             HeartCounter();
         }
+
+        DebugMenu();
     }
 
     public void FixedUpdate()
@@ -112,13 +116,46 @@ public class UIManager : MonoBehaviour
         transform.position = mousePos;
     }
 
-    private void DebugOpen()
+    #region Menus
+
+    public void DebugMenu()
     {
-        
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (debugging && !paused)
+            {
+                debugging = false;
+                debugPanel.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else if(!debugging && !paused)
+            {
+                debugging = true;
+                debugPanel.SetActive(true);
+                Time.timeScale = 0;
+            }
+
+        }
     }
 
-    private void DebugClose()
+    public void PauseMenu()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!debugging && paused)
+            {
+                paused = false;
+                pausePanel.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else if(!debugging && !paused)
+            {
+                paused = true;
+                pausePanel.SetActive(true);
+                Time.timeScale = 0;
+            }
 
+        }
     }
+    #endregion
 }

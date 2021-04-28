@@ -20,6 +20,10 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
+    public LevelData levelData;
+    public string curLevel;
+    public int levelListIndex;
+
     private void Awake()
     {
         if(instance == null)
@@ -42,7 +46,7 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.LoadedNewScene();
         GameManager.Instance.LoadedNewScene();
 
-        if (scene.name == "MainMenu" || scene.name ==  "SelectSave")
+        if (scene.name == "MainMenu" || scene.name ==  "LevelSelect" || scene.name == "LoseScene")
         {
             UIManager.Instance.LoadedInMenus();
 
@@ -52,7 +56,6 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.Instance.LoadedInGame();
             UIManager.Instance.LoadedInGame();
-            //RatingManager.Instance.LoadedInGame();
 
             SaveManager.Instance.activeSave.curLevelName = scene.name;
             SaveManager.Instance.Save();
@@ -74,4 +77,5 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(levelName);
     }
+
 }
