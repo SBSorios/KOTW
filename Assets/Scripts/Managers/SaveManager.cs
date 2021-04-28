@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
@@ -30,6 +31,21 @@ public class SaveManager : MonoBehaviour
     void Awake()
     {
         Load();
+
+        if (!hasLoaded)
+        {
+            activeSave.levelData = new List<LevelData>()
+        {
+            new LevelData(){levelName = "Level1", maxCollectibles = 3},
+            new LevelData(){levelName = "Level2", maxCollectibles = 3},
+            new LevelData(){levelName = "Level3", maxCollectibles = 3},
+            new LevelData(){levelName = "Level4", maxCollectibles = 3},
+            new LevelData(){levelName = "BonusLevel1", maxCollectibles = 3},
+            new LevelData(){levelName = "BonusLevel2", maxCollectibles = 3},
+            new LevelData(){levelName = "BonusLevel3", maxCollectibles = 3},
+            new LevelData(){levelName = "BonusLevel4", maxCollectibles = 3},
+        };
+        }
     }
 
     void Update()
@@ -47,6 +63,12 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             DeleteSaveData();
+        }
+        if (Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().name == activeSave.levelData[0].levelName)
+        {
+            activeSave.levelData[0].levelComplete = true;
+            //int index = activeSave.levelData.FindIndex()
+
         }
     }
 
@@ -96,6 +118,8 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
+    public List<LevelData> levelData;
+
     [Header("Save Variables")]
     public string saveName;
 
@@ -107,4 +131,17 @@ public class SaveData
     public string curLevelName;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
+}
+
+[System.Serializable]
+public class LevelData
+{
+    public string levelName;
+    public float levelRating;
+    public int maxCollectibles;
+    public int curCollectibles;
+    public Vector3 spawnPosition;
+    public bool activeCheckpoint;
+    public bool bonusUnlocked;
+    public bool levelComplete;
 }

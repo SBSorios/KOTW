@@ -12750,6 +12750,7 @@ MonoBehaviour:
   wet: 0
   slowedSpeed: 5
   dryTime: 2
+  soundbyte: {fileID: 0}
 --- !u!483693784 &1343473874
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -14038,6 +14039,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2638803951035798120, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3024213605766033948, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: m_Name
       value: LevelEssentialsV2
@@ -14084,6 +14089,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024213605766033949, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024213605977621683, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
+      propertyPath: activeSave.levelData.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
