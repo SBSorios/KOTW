@@ -18,6 +18,8 @@ public class ToggleAffect : MonoBehaviour
         {
             reward.SetActive(true);
             AudioManager.Instance.PlayClip(unlockedClip);
+            GameManager.Instance.curBonusUnlocked = true;
+            LevelManager.Instance.SaveToCurLevel();
             finishedToggling = true;
         }
     }

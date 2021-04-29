@@ -913,14 +913,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3024213604556178386, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3024213604556178391, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3024213605766033948, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: m_Name
       value: LevelEssentialsV2

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,8 +28,10 @@ public class GameManager : MonoBehaviour
     public int maxLives;
     public int curLives;
 
-    [HideInInspector]
+    //[HideInInspector]
     public GameObject player;
+    public GameObject titan;
+    public GameObject killZone;
     [HideInInspector]
     public PlayerController pc;
     [HideInInspector]
@@ -38,8 +41,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Gameplay Variables")]
     public Transform startPOS;
-    public Transform curCheckpoint;
-    public Vector3 respawnPoint;
+    public Transform checkpointPOS;
+
+    [Header("Save Variables")]
+    public bool curLevelComplete;
+    public bool curBonusUnlocked;
+
 
     void Awake()
     {
@@ -53,6 +60,11 @@ public class GameManager : MonoBehaviour
             Object.Destroy(gameObject);
         }
         #endregion
+
+        if (!SaveManager.Instance.hasLoaded)
+        {
+            ResetLives();
+        }
     }
 
     public void LoadedNewScene()
@@ -63,7 +75,10 @@ public class GameManager : MonoBehaviour
     public void LoadedInGame()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        titan = GameObject.FindGameObjectWithTag("Titan");
+        killZone = GameObject.FindGameObjectWithTag("KillZone");
         startPOS = GameObject.FindGameObjectWithTag("Start").transform;
+        checkpointPOS = GameObject.FindGameObjectWithTag("Checkpoint").transform;
 
         if (player != null)
         {
@@ -72,31 +87,21 @@ public class GameManager : MonoBehaviour
             wc = player.GetComponent<WindController>();
             PlayerStart();
         }
-
-        if (SaveManager.Instance.hasLoaded)
-        {
-            respawnPoint = SaveManager.Instance.activeSave.spawnPosition;
-            player.transform.position = respawnPoint;
-            curLives = SaveManager.Instance.activeSave.lives;
-        }
-        else
-        {
-            SaveManager.Instance.activeSave.spawnPosition = startPOS.transform.position;
-            SaveManager.Instance.activeSave.lives = maxLives;
-            ResetLives();
-        }
     }
+    #region Positioning
 
     public void PlayerStart()
     {
-        player.transform.position = startPOS.position;
+        //player.transform.position = startPOS.position;
     }
 
     public void CheckpointReset()
     {
-        player.transform.position = curCheckpoint.position;
+        //player.transform.position = curCheckpoint.position;
     }
+    #endregion
 
+    #region Life
     public void AddLife()
     {
         curLives++;
@@ -113,6 +118,7 @@ public class GameManager : MonoBehaviour
     public void ResetLives()
     {
         curLives = maxLives;
+        SaveManager.Instance.activeSave.lives = curLives;
     }
 
     public void LoseCondition()
@@ -122,6 +128,5 @@ public class GameManager : MonoBehaviour
             LevelManager.Instance.LoadLevel("LoseScene");
         }
     }
-
-
+    #endregion
 }

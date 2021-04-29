@@ -5,11 +5,13 @@ public class CameraFollow : MonoBehaviour
 {
     public Vector3 offsets;
     public Vector3 playerOffsets;
+    public Vector3 titanOffsets;
     public float transitionSpeed = 20;
 
     public Transform target;
     private bool isChanging = false;
     private bool playerCheck;
+    private bool titanCheck;
 
     private void Start()
     {
@@ -19,11 +21,6 @@ public class CameraFollow : MonoBehaviour
             {
                 target = GameManager.Instance.player.transform;
             }
-        }
-
-        if(target == null)
-        {
-            target = GameObject.FindGameObjectWithTag("Titan").transform;
         }
     }
 
@@ -36,6 +33,7 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         CheckIfPlayer();
+        CheckIfTitan();
 
         if (!isChanging)
         {
@@ -58,6 +56,17 @@ public class CameraFollow : MonoBehaviour
         {
             offsets = playerOffsets;
             playerCheck = true;
+            titanCheck = false;
+        }
+    }
+
+    public void CheckIfTitan()
+    {
+        if(target == GameManager.Instance.killZone && !titanCheck)
+        {
+            offsets = titanOffsets;
+            playerCheck = false;
+            titanCheck = true;
         }
     }
 

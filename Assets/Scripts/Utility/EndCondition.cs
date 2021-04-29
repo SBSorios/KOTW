@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class EndCondition : MonoBehaviour
 {
+    public string scene;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            LevelManager.Instance.LoadLevel("WinScene");
+            GameManager.Instance.curLevelComplete = true;
+            LevelManager.Instance.SaveToCurLevel();
+            LevelManager.Instance.LoadLevel(scene);
         }
     }
 }
