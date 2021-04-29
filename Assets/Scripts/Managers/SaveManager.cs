@@ -24,7 +24,6 @@ public class SaveManager : MonoBehaviour
     #endregion
 
     public SaveData activeSave;
-    public bool freshSave;
     public bool inGame;
     public bool hasLoaded;
 
@@ -32,19 +31,17 @@ public class SaveManager : MonoBehaviour
     {
         Load();
 
+
         if (!hasLoaded)
         {
-            activeSave.levelData = new List<LevelData>()
-        {
-            new LevelData(){levelName = "Level1", maxCollectibles = 3},
-            new LevelData(){levelName = "Level2", maxCollectibles = 3},
-            new LevelData(){levelName = "Level3", maxCollectibles = 3},
-            new LevelData(){levelName = "Level4", maxCollectibles = 3},
-            new LevelData(){levelName = "BonusLevel1", maxCollectibles = 3},
-            new LevelData(){levelName = "BonusLevel2", maxCollectibles = 3},
-            new LevelData(){levelName = "BonusLevel3", maxCollectibles = 3},
-            new LevelData(){levelName = "BonusLevel4", maxCollectibles = 3},
-        };
+            activeSave.levelData[0].levelName = "Level1";
+            activeSave.levelData[1].levelName = "Level2";
+            activeSave.levelData[2].levelName = "Level3";
+            activeSave.levelData[3].levelName = "Level4";
+            activeSave.levelData[4].levelName = "BonusLevel1";
+            activeSave.levelData[5].levelName = "BonusLevel2";
+            activeSave.levelData[6].levelName = "BonusLevel3";
+            activeSave.levelData[7].levelName = "BonusLevel4";
         }
     }
 
@@ -63,12 +60,6 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             DeleteSaveData();
-        }
-        if (Input.GetKeyDown(KeyCode.P) && SceneManager.GetActiveScene().name == activeSave.levelData[0].levelName)
-        {
-            activeSave.levelData[0].levelComplete = true;
-            //int index = activeSave.levelData.FindIndex()
-
         }
     }
 
@@ -118,7 +109,8 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class SaveData
 {
-    public List<LevelData> levelData;
+    public LevelData[] levelData;
+    public bool[] bonusLevels;
 
     [Header("Save Variables")]
     public string saveName;
@@ -128,7 +120,7 @@ public class SaveData
 
     [Header("Level Variables")]
     public string firstLevelName;
-    public string curLevelName;
+    public string lastLoadedLevel;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
 }
@@ -143,5 +135,6 @@ public class LevelData
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
     public bool bonusUnlocked;
+    public bool levelLoaded;
     public bool levelComplete;
 }

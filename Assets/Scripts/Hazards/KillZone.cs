@@ -5,7 +5,7 @@ using UnityEngine;
 public class KillZone : MonoBehaviour
 {
     public float speed;
-
+    public Transform startPOS;
     public GameObject killZone;
     public GameObject endZone;
 
@@ -29,7 +29,6 @@ public class KillZone : MonoBehaviour
             if (killZone.transform.position.x == endZone.transform.position.x)
             {
                 run = false;
-                Debug.Log("Safe, for now...");
             }
 
         }
@@ -42,5 +41,11 @@ public class KillZone : MonoBehaviour
             Debug.Log("Player Triggered KillZone");
             run = true;
         }
+    }
+
+    public void ResetKillZone()
+    {
+        killZone.transform.position = startPOS.position;
+        Camera.main.GetComponent<CameraFollow>().target = GameManager.Instance.killZone.transform;
     }
 }

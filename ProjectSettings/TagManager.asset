@@ -12,6 +12,8 @@ TagManager:
   - Start
   - Titan
   - Coin
+  - Checkpoint
+  - KillZone
   layers:
   - Default
   - TransparentFX

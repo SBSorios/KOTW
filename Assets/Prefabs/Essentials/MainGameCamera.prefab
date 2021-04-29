@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsets: {x: 10.42, y: 0.11, z: -10}
   playerOffsets: {x: 0, y: 4.2, z: -10}
+  titanOffsets: {x: 0, y: 0, z: 0}
   transitionSpeed: 20
   target: {fileID: 0}
 --- !u!81 &4569135412855363553

@@ -20,21 +20,7 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
-    public LevelData levelData;
     public string curLevel;
-    public int levelListIndex;
-
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Object.Destroy(gameObject);
-        }
-    }
 
     void OnEnable()
     {
@@ -43,13 +29,13 @@ public class LevelManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        CurrentScene();
         UIManager.Instance.LoadedNewScene();
         GameManager.Instance.LoadedNewScene();
 
-        if (scene.name == "MainMenu" || scene.name ==  "LevelSelect" || scene.name == "LoseScene")
+        if (scene.name == "MainMenu" || scene.name == "LevelSelect" || scene.name == "LoseScene")
         {
             UIManager.Instance.LoadedInMenus();
-
             SaveManager.Instance.inGame = false;
         }
         else
@@ -57,10 +43,11 @@ public class LevelManager : MonoBehaviour
             GameManager.Instance.LoadedInGame();
             UIManager.Instance.LoadedInGame();
 
-            SaveManager.Instance.activeSave.curLevelName = scene.name;
-            SaveManager.Instance.Save();
+            SaveManager.Instance.activeSave.lastLoadedLevel = scene.name;
             SaveManager.Instance.inGame = true;
         }
+
+        CheckIfLevelLoaded();
     }
 
     void OnDisable()
@@ -71,11 +58,118 @@ public class LevelManager : MonoBehaviour
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
     }
 
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void CurrentScene()
+    {
+        curLevel = SceneManager.GetActiveScene().name;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    //For When The Player Completes Level Objectives
+    public void SaveToCurLevel()
+    {
+        for (int i = 0; i < SaveManager.Instance.activeSave.levelData.Length; i++)
+        {
+            if(SaveManager.Instance.activeSave.levelData[i].levelName == curLevel)
+            {
+                if (!SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                {
+                    SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
+                }
+                else
+                {
+                    SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.checkpointPOS.position;
+                }
+                SaveManager.Instance.activeSave.levelData[i].activeCheckpoint = SaveManager.Instance.activeSave.activeCheckpoint;
+                SaveManager.Instance.activeSave.levelData[i].levelComplete = GameManager.Instance.curLevelComplete;
+                SaveManager.Instance.activeSave.levelData[i].bonusUnlocked = GameManager.Instance.curBonusUnlocked;
+                SaveManager.Instance.Save();
+
+                if(curLevel == "Level1" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                {
+                    SaveManager.Instance.activeSave.bonusLevels[0] = true;
+                }
+                else if(curLevel == "Level2" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                {
+                    SaveManager.Instance.activeSave.bonusLevels[1] = true;
+                }
+                else if (curLevel == "Level3" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                {
+                    SaveManager.Instance.activeSave.bonusLevels[2] = true;
+                }
+                else if (curLevel == "Level4" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                {
+                    SaveManager.Instance.activeSave.bonusLevels[3] = true;
+                }
+            }
+        }
+    }
+
+    //For When The Player Enters A Level
+    public void CheckIfLevelLoaded()
+    {
+        for (int i = 0; i < SaveManager.Instance.activeSave.levelData.Length; i++)
+        {
+            if (SaveManager.Instance.activeSave.levelData[i].levelName == curLevel)
+            {
+                if(SaveManager.Instance.activeSave.levelData[i].levelLoaded == false)
+                {
+                    GameManager.Instance.curLevelComplete = false;
+                    GameManager.Instance.curBonusUnlocked = false;
+                    GameManager.Instance.ResetLives();
+                    SaveManager.Instance.activeSave.activeCheckpoint = false;
+                    SaveManager.Instance.activeSave.levelData[i].activeCheckpoint = false;
+                    SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
+                    SaveManager.Instance.activeSave.levelData[i].levelLoaded = true;
+                    SaveManager.Instance.Save();
+                }
+                else
+                {
+                    SaveManager.Instance.activeSave.activeCheckpoint = SaveManager.Instance.activeSave.levelData[i].activeCheckpoint;
+                    if (!SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                    {
+                        SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
+                    }
+                    else
+                    {
+                        SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.checkpointPOS.position;
+                    }
+                    GameManager.Instance.curLives = SaveManager.Instance.activeSave.lives;
+                    GameManager.Instance.player.transform.position = SaveManager.Instance.activeSave.spawnPosition;
+                    SaveManager.Instance.Save();
+                }
+            }
+        }
+    }
+
+    //For when The Player Would Like To Retry The Level
+    public void ResetLevelStats()
+    {
+        for (int i = 0; i < SaveManager.Instance.activeSave.levelData.Length; i++)
+        {
+            if (SaveManager.Instance.activeSave.levelData[i].levelName == curLevel)
+            {
+                SaveManager.Instance.activeSave.levelData[i].levelLoaded = false;
+                CheckIfLevelLoaded();
+                ResetLevel();
+            }
+        }
     }
 
 }

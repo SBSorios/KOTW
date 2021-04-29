@@ -11,14 +11,12 @@ public class Checkpoint : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            if(GameManager.Instance.curCheckpoint != resetPOS && !triggerCheck)
+            if(!triggerCheck)
             {
-                Debug.Log("Entered Checkpoint!");
-                SaveManager.Instance.activeSave.spawnPosition = resetPOS.transform.position;
-                SaveManager.Instance.activeSave.activeCheckpoint = true;
-                SaveManager.Instance.Save();
-
                 GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
+                SaveManager.Instance.activeSave.activeCheckpoint = true;
+                LevelManager.Instance.SaveToCurLevel();
+                SaveManager.Instance.Save();
 
                 triggerCheck = true;
             }

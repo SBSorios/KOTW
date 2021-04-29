@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
         }
 
         DebugMenu();
+        PauseMenu();
     }
 
     public void FixedUpdate()
@@ -58,7 +59,6 @@ public class UIManager : MonoBehaviour
     public void LoadedNewScene()
     {
         mainCanvas = FindObjectOfType<Canvas>();
-        //mainCanvas.worldCamera = Camera.main;
     }
 
     public void LoadedInMenus()
@@ -120,7 +120,7 @@ public class UIManager : MonoBehaviour
 
     public void DebugMenu()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (debugging && !paused)
             {

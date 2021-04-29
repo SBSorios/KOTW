@@ -36,7 +36,7 @@ public class SaveSlot : MonoBehaviour
         }
         else
         {
-            LevelManager.Instance.LoadLevel(SaveManager.Instance.activeSave.curLevelName);
+            LevelManager.Instance.LoadLevel(SaveManager.Instance.activeSave.lastLoadedLevel);
         }
     }
 
