@@ -8,12 +8,12 @@ public class ResetJump : MonoBehaviour
     public bool activated;
     public float activeTime;
     private float timer;
-    private SpriteRenderer sr;
+    public SpriteRenderer[] sr;
     public GameObject bottomCollider;
 
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        sr = GetComponentsInChildren<SpriteRenderer>();
         timer = activeTime;
     }
 
@@ -43,13 +43,19 @@ public class ResetJump : MonoBehaviour
 
     private void Active()
     {
-        sr.color = Color.green;
+        for (int i = 0; i < sr.Length; i++)
+        {
+            sr[i].color = new Color(1, 1, 1, 1f);
+        }
         bottomCollider.SetActive(true);
     }
 
     private void Inactive()
     {
-        sr.color = Color.red;
+        for (int i = 0; i < sr.Length; i++)
+        {
+            sr[i].color = new Color(1, 1, 1, .5f);
+        }
         bottomCollider.SetActive(false);
     }
 

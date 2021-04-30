@@ -5,6 +5,9 @@ using UnityEngine;
 public class BreakableObject : MonoBehaviour
 {
     public GameObject brokenPieces;
+    public GameObject collectible;
+    public bool spawnCollectible; 
+
     void Start()
     {
         
@@ -33,6 +36,11 @@ public class BreakableObject : MonoBehaviour
         foreach(Transform piece in brokenVase.transform)
         {
             piece.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-2f, 2f), Random.Range(2f, 7f));
+        }
+
+        if (spawnCollectible)
+        {
+            Instantiate(collectible, transform.position, Quaternion.identity);
         }
     }
 }

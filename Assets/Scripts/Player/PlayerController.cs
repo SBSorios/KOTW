@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public float normalSpeed;
     private float moveInput;
     private Animator anim;
+    public bool inVacuum;
 
     [Header("Jump Variables")]
     public float jumpForce;
@@ -78,6 +79,11 @@ public class PlayerController : MonoBehaviour
         else if(moveInput == 0)
         {
             anim.SetBool("Running", false);
+
+            if (inVacuum)
+            {
+                rb.velocity = new Vector2(-1,0);
+            }
         }
     }
 

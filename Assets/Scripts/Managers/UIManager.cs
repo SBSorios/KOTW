@@ -31,9 +31,12 @@ public class UIManager : MonoBehaviour
     public GameObject inGameObjects;
     public Image windIconCooldown;
     public Image[] hearts;
+    public Image[] coins;
     public Image[] stars;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    public Sprite fullCoin;
+    public Sprite emptyCoin;
     public Sprite fullStar;
     public Sprite emptyStar;
 
@@ -42,6 +45,7 @@ public class UIManager : MonoBehaviour
         if (SaveManager.Instance.inGame)
         {
             HeartCounter();
+            CoinCounter();
         }
 
         DebugMenu();
@@ -96,6 +100,30 @@ public class UIManager : MonoBehaviour
             else
             {
                 hearts[i].enabled = false;
+            }
+        }
+    }
+
+    public void CoinCounter()
+    {
+        for (int i = 0; i < coins.Length; i++)
+        {
+            if (i < GameManager.Instance.curCollectibles)
+            {
+                coins[i].sprite = fullCoin;
+            }
+            else
+            {
+                coins[i].sprite = emptyCoin;
+            }
+
+            if (i < SaveManager.Instance.activeSave.maxCollectibles)
+            {
+                coins[i].enabled = true;
+            }
+            else
+            {
+                coins[i].enabled = false;
             }
         }
     }

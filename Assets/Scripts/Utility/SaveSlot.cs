@@ -30,14 +30,7 @@ public class SaveSlot : MonoBehaviour
 
     public void StartGame()
     {
-        if (newGame)
-        {
-            LevelManager.Instance.LoadLevel(SaveManager.Instance.activeSave.firstLevelName);
-        }
-        else
-        {
-            LevelManager.Instance.LoadLevel(SaveManager.Instance.activeSave.lastLoadedLevel);
-        }
+        LevelManager.Instance.LoadLevel("LevelSelect");
     }
 
     public void MessageShow()

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class KillZone : MonoBehaviour
 {
-    public float speed;
+    [Header("Base Variables")]
     public Transform startPOS;
     public GameObject killZone;
     public GameObject endZone;
 
+    [Header("Chase Variables")]
+    public float speed;
     public bool run;
+
 
     private void Start()
     {

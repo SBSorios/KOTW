@@ -30,18 +30,19 @@ public class SaveManager : MonoBehaviour
     void Awake()
     {
         Load();
-
+        activeSave.maxCollectibles = 3;
 
         if (!hasLoaded)
         {
-            activeSave.levelData[0].levelName = "Level1";
-            activeSave.levelData[1].levelName = "Level2";
-            activeSave.levelData[2].levelName = "Level3";
-            activeSave.levelData[3].levelName = "Level4";
-            activeSave.levelData[4].levelName = "BonusLevel1";
-            activeSave.levelData[5].levelName = "BonusLevel2";
-            activeSave.levelData[6].levelName = "BonusLevel3";
-            activeSave.levelData[7].levelName = "BonusLevel4";
+            activeSave.levelData[0].levelName = "Tutorial";
+            activeSave.levelData[1].levelName = "Level1";
+            activeSave.levelData[2].levelName = "Level2";
+            activeSave.levelData[3].levelName = "Level3";
+            activeSave.levelData[4].levelName = "Level4";
+            activeSave.levelData[5].levelName = "BonusLevel1";
+            activeSave.levelData[6].levelName = "BonusLevel2";
+            activeSave.levelData[7].levelName = "BonusLevel3";
+            activeSave.levelData[8].levelName = "BonusLevel4";
         }
     }
 
@@ -121,6 +122,7 @@ public class SaveData
     [Header("Level Variables")]
     public string firstLevelName;
     public string lastLoadedLevel;
+    public int maxCollectibles;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
 }
@@ -130,7 +132,6 @@ public class LevelData
 {
     public string levelName;
     public float levelRating;
-    public int maxCollectibles;
     public int curCollectibles;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
