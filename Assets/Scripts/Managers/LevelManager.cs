@@ -21,10 +21,16 @@ public class LevelManager : MonoBehaviour
     #endregion
 
     public string curLevel;
+    public bool l1, l2, l3, l4, bL1, bL2, bL3, bL4;
 
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void Update()
+    {
+        SaveLevelUnlockData();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -64,6 +70,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         SceneManager.LoadScene(levelName);
+        Time.timeScale = 1;
     }
 
     public void LoadNextLevel()
@@ -88,6 +95,8 @@ public class LevelManager : MonoBehaviour
         {
             if(SaveManager.Instance.activeSave.levelData[i].levelName == curLevel)
             {
+                SaveManager.Instance.activeSave.levelData[i].curCollectibles = GameManager.Instance.curCollectibles;
+
                 if (!SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
                 {
                     SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
@@ -97,9 +106,9 @@ public class LevelManager : MonoBehaviour
                     SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.checkpointPOS.position;
                 }
                 SaveManager.Instance.activeSave.levelData[i].activeCheckpoint = SaveManager.Instance.activeSave.activeCheckpoint;
+
                 SaveManager.Instance.activeSave.levelData[i].levelComplete = GameManager.Instance.curLevelComplete;
                 SaveManager.Instance.activeSave.levelData[i].bonusUnlocked = GameManager.Instance.curBonusUnlocked;
-                SaveManager.Instance.Save();
 
                 if(curLevel == "Level1" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
                 {
@@ -117,6 +126,8 @@ public class LevelManager : MonoBehaviour
                 {
                     SaveManager.Instance.activeSave.bonusLevels[3] = true;
                 }
+
+                SaveManager.Instance.Save();
             }
         }
     }
@@ -130,26 +141,40 @@ public class LevelManager : MonoBehaviour
             {
                 if(SaveManager.Instance.activeSave.levelData[i].levelLoaded == false)
                 {
+                    GameManager.Instance.curCollectibles = 0;
                     GameManager.Instance.curLevelComplete = false;
                     GameManager.Instance.curBonusUnlocked = false;
                     GameManager.Instance.ResetLives();
                     SaveManager.Instance.activeSave.activeCheckpoint = false;
                     SaveManager.Instance.activeSave.levelData[i].activeCheckpoint = false;
+                    SaveManager.Instance.activeSave.levelData[i].levelComplete = false;
                     SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
                     SaveManager.Instance.activeSave.levelData[i].levelLoaded = true;
                     SaveManager.Instance.Save();
                 }
                 else
                 {
+                    GameManager.Instance.curCollectibles = SaveManager.Instance.activeSave.levelData[i].curCollectibles;
                     SaveManager.Instance.activeSave.activeCheckpoint = SaveManager.Instance.activeSave.levelData[i].activeCheckpoint;
                     if (!SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
                     {
+                        GameManager.Instance.curCollectibles = 0;
+                        SaveManager.Instance.activeSave.levelData[i].curCollectibles = GameManager.Instance.curCollectibles;
                         SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
                     }
                     else
                     {
                         SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.checkpointPOS.position;
+                        GameManager.Instance.curCollectibles = SaveManager.Instance.activeSave.levelData[i].curCollectibles;
                     }
+
+                    if (SaveManager.Instance.activeSave.levelData[i].levelComplete)
+                    {
+                        Debug.Log("Completed Level");
+                        GameManager.Instance.curLevelComplete = true;
+                        SaveManager.Instance.activeSave.levelData[i].levelComplete = true;
+                    }
+
                     GameManager.Instance.curLives = SaveManager.Instance.activeSave.lives;
                     GameManager.Instance.player.transform.position = SaveManager.Instance.activeSave.spawnPosition;
                     SaveManager.Instance.Save();
@@ -169,6 +194,65 @@ public class LevelManager : MonoBehaviour
                 CheckIfLevelLoaded();
                 ResetLevel();
             }
+        }
+    }
+
+    public void LevelSelectReset(int index)
+    {
+        if (SceneManager.GetActiveScene().name == "LevelSelect")
+        {
+            SaveManager.Instance.activeSave.levelData[index].levelLoaded = false;
+            GameManager.Instance.curCollectibles = 0;
+            GameManager.Instance.curLevelComplete = false;
+            GameManager.Instance.curBonusUnlocked = false;
+            GameManager.Instance.ResetLives();
+            SaveManager.Instance.activeSave.activeCheckpoint = false;
+            SaveManager.Instance.activeSave.levelData[index].activeCheckpoint = false;
+            SaveManager.Instance.activeSave.levelData[index].levelLoaded = true;
+            SaveManager.Instance.Save();
+        }
+    }
+
+    public void SaveLevelUnlockData()
+    {
+        if (SaveManager.Instance.activeSave.levelData[0].levelComplete && !l1)
+        {
+            l1 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.levelData[1].levelComplete && !l2)
+        {
+            l2 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.levelData[2].levelComplete && !l3)
+        {
+            l3 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.levelData[3].levelComplete && !l4)
+        {
+            l4 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.bonusLevels[0] && !bL1)
+        {
+            bL1 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.bonusLevels[1] && !bL2)
+        {
+            bL2 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.bonusLevels[2] && !bL3)
+        {
+            bL3 = true;
+        }
+
+        if (SaveManager.Instance.activeSave.bonusLevels[3] && !bL4)
+        {
+            bL4 = true;
         }
     }
 

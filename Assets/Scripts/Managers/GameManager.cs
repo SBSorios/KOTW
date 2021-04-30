@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [Header("Player Variables")]
     public int maxLives;
     public int curLives;
+    public int curCollectibles;
 
     //[HideInInspector]
     public GameObject player;

@@ -12,7 +12,7 @@ public class EndCondition : MonoBehaviour
         {
             GameManager.Instance.curLevelComplete = true;
             LevelManager.Instance.SaveToCurLevel();
-            LevelManager.Instance.LoadLevel(scene);
+            LevelManager.Instance.LoadLevel("LevelSelect");
         }
     }
 }
