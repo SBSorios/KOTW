@@ -41,7 +41,7 @@ public class KillZone : MonoBehaviour
     {
         if(col.gameObject.tag == "Player")
         {
-            Debug.Log("Player Triggered KillZone");
+            GameManager.Instance.BeginTimer();
             run = true;
         }
     }

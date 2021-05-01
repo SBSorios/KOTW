@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     {
         GameManager.Instance.player.GetComponent<SpriteRenderer>().enabled = false;
         GameManager.Instance.player.GetComponent<BoxCollider2D>().enabled = false;
-
+        SaveManager.Instance.activeSave.savedTime = GameManager.Instance.elapsedTime;
         GameManager.Instance.curLives--;
         SaveManager.Instance.activeSave.lives = GameManager.Instance.curLives;
         SaveManager.Instance.Save();

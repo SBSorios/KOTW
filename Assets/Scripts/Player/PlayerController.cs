@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public float normalSpeed;
     private float moveInput;
     private Animator anim;
+    public bool canMove;
     public bool inVacuum;
 
     [Header("Jump Variables")]
@@ -47,18 +48,25 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         curSpeed = normalSpeed;
+        canMove = true;
     }
 
     private void Update()
     {
-        JumpController();
+        if (canMove)
+        {
+            JumpController();
+        }
         IsGrounded();
     }
 
 
     void FixedUpdate()
     {
-        Controller();
+        if (canMove)
+        {
+            Controller();
+        }
     }
 
     void Controller()

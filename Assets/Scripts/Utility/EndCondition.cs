@@ -10,9 +10,11 @@ public class EndCondition : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            GameManager.Instance.CalculateScore();
+            UIManager.Instance.levelCompletePanel.SetActive(true);
             GameManager.Instance.curLevelComplete = true;
+            GameManager.Instance.pc.canMove = false;
             LevelManager.Instance.SaveToCurLevel();
-            LevelManager.Instance.LoadLevel("LevelSelect");
         }
     }
 }
