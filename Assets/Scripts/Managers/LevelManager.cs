@@ -21,7 +21,8 @@ public class LevelManager : MonoBehaviour
     #endregion
 
     public string curLevel;
-    public bool l1, l2, l3, l4, bL1, bL2, bL3, bL4;
+    public bool level1Unlocked, level2Unlocked, level3Unlocked, level4Unlocked, bonusLevel1Unlocked, bonusLevel2Unlocked, bonusLevel3Unlocked, bonusLevel4Unlocked;
+    private LevelSelect levelSelect;
 
     void OnEnable()
     {
@@ -43,6 +44,11 @@ public class LevelManager : MonoBehaviour
         {
             UIManager.Instance.LoadedInMenus();
             SaveManager.Instance.inGame = false;
+
+            if(scene.name == "LevelSelect")
+            {
+                levelSelect = GameObject.FindGameObjectWithTag("Level Select").GetComponent<LevelSelect>();
+            }
         }
         else
         {
@@ -96,7 +102,8 @@ public class LevelManager : MonoBehaviour
             if(SaveManager.Instance.activeSave.levelData[i].levelName == curLevel)
             {
                 SaveManager.Instance.activeSave.levelData[i].curCollectibles = GameManager.Instance.curCollectibles;
-
+                SaveManager.Instance.activeSave.levelData[i].levelTime = SaveManager.Instance.activeSave.savedTime;
+                SaveManager.Instance.activeSave.levelData[i].levelScore = GameManager.Instance.totalScore;
                 if (!SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
                 {
                     SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
@@ -148,6 +155,9 @@ public class LevelManager : MonoBehaviour
                     SaveManager.Instance.activeSave.activeCheckpoint = false;
                     SaveManager.Instance.activeSave.levelData[i].activeCheckpoint = false;
                     SaveManager.Instance.activeSave.levelData[i].levelComplete = false;
+                    SaveManager.Instance.activeSave.savedTime = 0;
+                    SaveManager.Instance.activeSave.levelData[i].levelTime = 0;
+                    SaveManager.Instance.activeSave.levelData[i].levelScore = 0;
                     SaveManager.Instance.activeSave.spawnPosition = GameManager.Instance.startPOS.position;
                     SaveManager.Instance.activeSave.levelData[i].levelLoaded = true;
                     SaveManager.Instance.Save();
@@ -155,6 +165,8 @@ public class LevelManager : MonoBehaviour
                 else
                 {
                     GameManager.Instance.curCollectibles = SaveManager.Instance.activeSave.levelData[i].curCollectibles;
+                    SaveManager.Instance.activeSave.savedTime = SaveManager.Instance.activeSave.levelData[i].levelTime;
+                    GameManager.Instance.totalScore = SaveManager.Instance.activeSave.levelData[i].levelScore;
                     SaveManager.Instance.activeSave.activeCheckpoint = SaveManager.Instance.activeSave.levelData[i].activeCheckpoint;
                     if (!SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
                     {
@@ -197,62 +209,64 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void LevelSelectReset(int index)
+    public void LevelSelectReset()
     {
-        if (SceneManager.GetActiveScene().name == "LevelSelect")
-        {
-            SaveManager.Instance.activeSave.levelData[index].levelLoaded = false;
-            GameManager.Instance.curCollectibles = 0;
-            GameManager.Instance.curLevelComplete = false;
-            GameManager.Instance.curBonusUnlocked = false;
-            GameManager.Instance.ResetLives();
-            SaveManager.Instance.activeSave.activeCheckpoint = false;
-            SaveManager.Instance.activeSave.levelData[index].activeCheckpoint = false;
-            SaveManager.Instance.activeSave.levelData[index].levelLoaded = true;
-            SaveManager.Instance.Save();
-        }
+        int index = levelSelect.levelIndex;
+        Debug.Log(index);
+        SaveManager.Instance.activeSave.levelData[index].levelLoaded = false;
+        GameManager.Instance.curCollectibles = 0;
+        GameManager.Instance.curLevelComplete = false;
+        GameManager.Instance.curBonusUnlocked = false;
+        SaveManager.Instance.activeSave.savedTime = 0;
+        SaveManager.Instance.activeSave.levelData[index].levelTime = 0;
+        SaveManager.Instance.activeSave.levelData[index].levelScore = 0;
+        GameManager.Instance.ResetLives();
+        SaveManager.Instance.activeSave.activeCheckpoint = false;
+        SaveManager.Instance.activeSave.levelData[index].activeCheckpoint = false;
+        SaveManager.Instance.activeSave.levelData[index].levelComplete = false;
+        SaveManager.Instance.Save();
     }
 
     public void SaveLevelUnlockData()
     {
-        if (SaveManager.Instance.activeSave.levelData[0].levelComplete && !l1)
+        if (SaveManager.Instance.activeSave.levelData[0].levelComplete && SaveManager.Instance.activeSave.levelData[0].levelScore >= 33 && !level1Unlocked)
         {
-            l1 = true;
+            level1Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.levelData[1].levelComplete && !l2)
+        if (SaveManager.Instance.activeSave.levelData[1].levelComplete && SaveManager.Instance.activeSave.levelData[1].levelScore >= 33 && !level2Unlocked)
         {
-            l2 = true;
+            level2Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.levelData[2].levelComplete && !l3)
+        if (SaveManager.Instance.activeSave.levelData[2].levelComplete && SaveManager.Instance.activeSave.levelData[2].levelScore >= 33 && !level3Unlocked)
         {
-            l3 = true;
+            level3Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.levelData[3].levelComplete && !l4)
+        if (SaveManager.Instance.activeSave.levelData[3].levelComplete && SaveManager.Instance.activeSave.levelData[3].levelScore >= 33 && !level4Unlocked)
         {
-            l4 = true;
+            level4Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.bonusLevels[0] && !bL1)
+        if (SaveManager.Instance.activeSave.bonusLevels[0] && !bonusLevel1Unlocked)
         {
-            bL1 = true;
+            bonusLevel1Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.bonusLevels[1] && !bL2)
+        if (SaveManager.Instance.activeSave.bonusLevels[1] && !bonusLevel2Unlocked)
         {
-            bL2 = true;
+            bonusLevel2Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.bonusLevels[2] && !bL3)
+        if (SaveManager.Instance.activeSave.bonusLevels[2] && !bonusLevel3Unlocked)
         {
-            bL3 = true;
+            bonusLevel3Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.bonusLevels[3] && !bL4)
+        if (SaveManager.Instance.activeSave.bonusLevels[3] && !bonusLevel4Unlocked)
         {
-            bL4 = true;
+            bonusLevel4Unlocked = true;
         }
     }
 

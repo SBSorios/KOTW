@@ -122,6 +122,7 @@ public class SaveData
     [Header("Level Variables")]
     public string firstLevelName;
     public string lastLoadedLevel;
+    public float savedTime;
     public int maxCollectibles;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
@@ -131,7 +132,8 @@ public class SaveData
 public class LevelData
 {
     public string levelName;
-    public float levelRating;
+    public float levelTime;
+    public float levelScore;
     public int curCollectibles;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,21 +25,21 @@ public class UIManager : MonoBehaviour
     public Canvas mainCanvas;
     public GameObject debugPanel;
     public GameObject pausePanel;
+    public GameObject levelCompletePanel;
     private bool debugging = false;
     private bool paused = false;
 
     [Header("In Game References")]
     public GameObject inGameObjects;
+    public Text timerText;
     public Image windIconCooldown;
     public Image[] hearts;
     public Image[] coins;
-    public Image[] stars;
+    public Image stars;
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Sprite fullCoin;
     public Sprite emptyCoin;
-    public Sprite fullStar;
-    public Sprite emptyStar;
 
     public void Update()
     {
@@ -56,7 +57,7 @@ public class UIManager : MonoBehaviour
     {
         if (SaveManager.Instance.inGame)
         {
-            CursorCooldown();        
+            CursorCooldown();
         }
     }
 

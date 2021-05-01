@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,13 @@ public class GameManager : MonoBehaviour
     public Transform startPOS;
     public Transform checkpointPOS;
 
+    private TimeSpan timePlaying;
+    public float chaseLength;
+    public float elapsedTime;
+    public float totalScore;
+    public bool timerActive;
+    public bool resetTimer;
+
     [Header("Save Variables")]
     public bool curLevelComplete;
     public bool curBonusUnlocked;
@@ -58,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Object.Destroy(gameObject);
+            Destroy(gameObject);
         }
         #endregion
 
@@ -89,6 +97,7 @@ public class GameManager : MonoBehaviour
             PlayerStart();
         }
     }
+
     #region Positioning
 
     public void PlayerStart()
@@ -129,5 +138,107 @@ public class GameManager : MonoBehaviour
             LevelManager.Instance.LoadLevel("LoseScene");
         }
     }
+    #endregion
+
+    #region Game Time
+    public void BeginTimer()
+    {
+        timerActive = true;
+
+        if (resetTimer)
+        {
+            elapsedTime = 0f;
+        }
+        else
+        {
+            elapsedTime = SaveManager.Instance.activeSave.savedTime;
+        }
+
+        StartCoroutine(UpdateTimer());
+    }
+
+    public void EndTimer()
+    {
+        timerActive = false;
+    }
+
+    public void DisplayElapsedTime()
+    {
+        timePlaying = TimeSpan.FromSeconds(SaveManager.Instance.activeSave.savedTime);
+        string timePlayingText = timePlaying.ToString("mm':'ss'.'ff");
+        UIManager.Instance.timerText.text = timePlayingText;
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        while (timerActive)
+        {
+            elapsedTime += Time.deltaTime;
+            timePlaying = TimeSpan.FromSeconds(elapsedTime);
+            string timePlayingText = timePlaying.ToString("mm':'ss'.'ff");
+            UIManager.Instance.timerText.text = timePlayingText;
+            yield return null;
+        }
+    }
+    #endregion
+
+    #region Scoring
+
+    public void CalculateScore()
+    {
+        float timeScore = 0;
+
+        if(elapsedTime <= chaseLength)
+        {
+            timeScore = 33f;
+        }
+        else if(elapsedTime >= chaseLength + 5)
+        {
+            timeScore = 16f;
+        }
+        else if(elapsedTime >= chaseLength + 10)
+        {
+            timeScore = 8f;
+        }
+
+        float collectibleScore = 0;
+
+        if(curCollectibles == 3)
+        {
+            collectibleScore = 33f;
+        }
+        else if(curCollectibles == 2)
+        {
+            collectibleScore = 16f;
+        }
+        else if(curCollectibles == 1)
+        {
+            collectibleScore = 8f;
+        }
+        else if(curCollectibles == 0)
+        {
+            collectibleScore = 0;
+        }
+
+        float lifeScore = 0;
+
+        if (curLives == 3)
+        {
+            lifeScore = 33f;
+        }
+        else if (curLives == 2)
+        {
+            lifeScore = 16f;
+        }
+        else if (curLives == 1)
+        {
+            lifeScore = 8f;
+        }
+
+        totalScore = timeScore + collectibleScore + lifeScore;
+        UIManager.Instance.stars.fillAmount = totalScore / 100;
+        Debug.Log(totalScore);
+    }
+
     #endregion
 }

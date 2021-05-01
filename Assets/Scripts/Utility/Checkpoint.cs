@@ -5,20 +5,19 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public Transform resetPOS;
-    private bool triggerCheck;
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
-            if(!triggerCheck)
+            if(!SaveManager.Instance.activeSave.activeCheckpoint)
             {
                 GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
+                SaveManager.Instance.activeSave.savedTime = GameManager.Instance.elapsedTime;
+                GameManager.Instance.DisplayElapsedTime();
+                GameManager.Instance.EndTimer();
                 SaveManager.Instance.activeSave.activeCheckpoint = true;
                 LevelManager.Instance.SaveToCurLevel();
-                SaveManager.Instance.Save();
-
-                triggerCheck = true;
             }
         }
     }
