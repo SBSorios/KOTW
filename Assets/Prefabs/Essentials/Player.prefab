@@ -231,8 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   normalSpeed: 10
-  vacuumedSpeedAway: 7
-  vacuumedSpeedTowards: 14
+  canMove: 0
   inVacuum: 0
   jumpForce: 15
   enableDoubleJump: 1
