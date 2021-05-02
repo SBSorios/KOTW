@@ -33,8 +33,10 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump Variables")]
     public float jumpForce;
+    private int maxAirJump;
+    private int curAirJump;
     public bool enableDoubleJump;
-    private bool canDoubleJump;
+    private bool holdingJump;
     public LayerMask groundLayer;
 
     public AudioClip jump;
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
         curSpeed = normalSpeed;
         canMove = true;
+
+        maxAirJump = 1;
     }
 
     private void Update()
@@ -57,7 +61,11 @@ public class PlayerController : MonoBehaviour
         {
             JumpController();
         }
-        IsGrounded();
+
+        if (IsGrounded())
+        {
+            curAirJump = 0;
+        }
     }
 
 
@@ -97,42 +105,22 @@ public class PlayerController : MonoBehaviour
 
     void JumpController()
     {
-        if (enableDoubleJump)
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
         {
             if (IsGrounded())
             {
-                canDoubleJump = true;
+                Jump();
             }
-
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
+            else
             {
-                if (IsGrounded())
+                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
                 {
-                    Jump();
-
-                    if(jump != null)
+                    if (curAirJump < maxAirJump)
                     {
-                        AudioManager.Instance.PlayClip(jump);
+                        Jump();
+                        curAirJump++;
                     }
                 }
-                else
-                {
-                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
-                    {
-                        if (canDoubleJump)
-                        {
-                            Jump();
-                            canDoubleJump = false;
-                        }
-                    }
-                }
-            }
-        }
-        else if (IsGrounded())
-        {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
-            {
-                rb.velocity = Vector2.up * jumpForce;
             }
         }
     }
@@ -140,11 +128,17 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.velocity = Vector2.up * jumpForce;
+
+        //Particle FX here
+
+        if (jump != null)
+        {
+            AudioManager.Instance.PlayClip(jump);
+        }
     }
 
     public void ResetJump()
     {
-        canDoubleJump = true;
         Jump();
     }
 

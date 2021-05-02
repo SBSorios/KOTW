@@ -7,11 +7,14 @@ public class CameraFollow : MonoBehaviour
     public Vector3 playerOffsets;
     public Vector3 titanOffsets;
     public float transitionSpeed = 20;
+    public float cameraPull;
+    public float maxTargetDist;
+    private float playerDist;
 
     public Transform target;
     private bool isChanging = false;
-    private bool playerCheck;
-    private bool titanCheck;
+    public bool playerCheck;
+    public bool titanCheck;
 
     private void Start()
     {
@@ -28,6 +31,11 @@ public class CameraFollow : MonoBehaviour
     {
         isChanging = true;
         target = newTarget;
+    }
+
+    private void Update()
+    {
+        CalculatePlayerDistance();
     }
 
     private void FixedUpdate()
@@ -48,13 +56,30 @@ public class CameraFollow : MonoBehaviour
                 isChanging = false;
             }
         }
+
+        if (titanCheck && playerDist >= maxTargetDist)
+        {
+            isChanging = true;
+            offsets = new Vector3(titanOffsets.x + cameraPull, titanOffsets.y, -10);
+            Debug.Log("Player Pulling");
+        }
+        else if (titanCheck && playerDist <= maxTargetDist)
+        {
+            isChanging = true;
+            offsets = titanOffsets;
+            Debug.Log("Player Not Pulling");
+        }
+
+        if (playerCheck)
+        {
+            offsets = playerOffsets;
+        }
     }
 
     public void CheckIfPlayer()
     {
         if(target == GameManager.Instance.player.transform && !playerCheck)
         {
-            offsets = playerOffsets;
             playerCheck = true;
             titanCheck = false;
         }
@@ -62,12 +87,16 @@ public class CameraFollow : MonoBehaviour
 
     public void CheckIfTitan()
     {
-        if(target == GameManager.Instance.killZone && !titanCheck)
+        if(target == GameManager.Instance.killZone.transform && !titanCheck)
         {
-            offsets = titanOffsets;
             playerCheck = false;
             titanCheck = true;
         }
+    }
+
+    private void CalculatePlayerDistance()
+    {
+        playerDist = Vector2.Distance(target.position, GameManager.Instance.player.transform.position);
     }
 
 }
