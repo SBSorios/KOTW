@@ -26,9 +26,12 @@ public class PlayerController : MonoBehaviour
     [Header("Movement Variables")]
     public float curSpeed;
     public float normalSpeed;
+    public float stunTime;
     private float moveInput;
+    private float timer;
     private Animator anim;
     public bool canMove;
+    public bool stunned;
     public bool inVacuum;
 
     [Header("Jump Variables")]
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
         canMove = true;
 
         maxAirJump = 1;
+        timer = stunTime;
     }
 
     private void Update()
@@ -65,6 +69,11 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded())
         {
             curAirJump = 0;
+        }
+
+        if (stunned)
+        {
+            StunPlayer();
         }
     }
 
@@ -162,5 +171,19 @@ public class PlayerController : MonoBehaviour
         Debug.DrawRay(bc.bounds.center - new Vector3(bc.bounds.extents.x, bc.bounds.extents.y + additionalHeight), Vector2.right * (bc.bounds.extents.y + additionalHeight), rayColor);
         return raycastHit.collider != null;
     }
+
+    public void StunPlayer()
+    {
+        canMove = false;
+        timer -= Time.deltaTime;
+        Debug.Log(timer);
+        if(timer <= 0)
+        {
+            canMove = true;
+            stunned = false;
+            timer = stunTime;
+        }
+    }
+
 }
 
