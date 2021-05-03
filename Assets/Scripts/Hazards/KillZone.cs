@@ -32,6 +32,7 @@ public class KillZone : MonoBehaviour
             if (killZone.transform.position.x == endZone.transform.position.x)
             {
                 run = false;
+                killZone.SetActive(false);
             }
 
         }
@@ -42,6 +43,7 @@ public class KillZone : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             GameManager.Instance.BeginTimer();
+            GetComponent<BoxCollider2D>().enabled = false;
             run = true;
         }
     }

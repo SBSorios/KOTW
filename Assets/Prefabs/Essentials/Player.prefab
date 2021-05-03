@@ -231,7 +231,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curSpeed: 0
   normalSpeed: 10
+  stunTime: 0.8
   canMove: 0
+  stunned: 0
   inVacuum: 0
   jumpForce: 15
   enableDoubleJump: 1
