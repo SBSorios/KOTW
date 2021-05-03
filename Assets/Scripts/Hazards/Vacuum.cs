@@ -28,6 +28,13 @@ public class Vacuum : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             GameManager.Instance.pc.inVacuum = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
             if (!GameManager.Instance.player.GetComponent<SpriteRenderer>().flipX)
             {
                 GameManager.Instance.pc.curSpeed = vacuumedSpeedAway;
@@ -57,7 +64,6 @@ public class Vacuum : MonoBehaviour
             {
                 vacuumDirection = transform.position - pulledObject.transform.position;
                 float distance = Vector2.Distance(transform.position, pulledObject.transform.position);
-                Debug.Log(distance);
                 if (distance <= pullDistance)
                 {
                     pulledObject.GetComponent<Rigidbody2D>().AddForce(vacuumDirection * suctionPower * (1 / Vector3.Distance(transform.position, pulledObject.transform.position)), ForceMode2D.Impulse);
