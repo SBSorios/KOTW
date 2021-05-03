@@ -23,6 +23,7 @@ public class CameraFollow : MonoBehaviour
             if (SaveManager.Instance.activeSave.activeCheckpoint)
             {
                 target = GameManager.Instance.player.transform;
+                isChanging = true;
             }
         }
     }
@@ -54,6 +55,15 @@ public class CameraFollow : MonoBehaviour
             if (transform.position == target.position + offsets)
             {
                 isChanging = false;
+
+                if (titanCheck)
+                {
+                    titanCheck = false;
+                }
+                else if (playerCheck)
+                {
+                    playerCheck = false;
+                }
             }
         }
 
@@ -61,13 +71,11 @@ public class CameraFollow : MonoBehaviour
         {
             isChanging = true;
             offsets = new Vector3(titanOffsets.x + cameraPull, titanOffsets.y, -10);
-            Debug.Log("Player Pulling");
         }
         else if (titanCheck && playerDist <= maxTargetDist)
         {
             isChanging = true;
             offsets = titanOffsets;
-            Debug.Log("Player Not Pulling");
         }
 
         if (playerCheck)
