@@ -731,6 +731,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 370903826799153010, guid: 301edba3fc61f314189f3f30f5b4b101, type: 3}
+      propertyPath: soundbyte
+      value: 
+      objectReference: {fileID: 8300000, guid: 7176adbf883b96c4ca752e01dd24e244, type: 3}
     - target: {fileID: 4050934344535385981, guid: 301edba3fc61f314189f3f30f5b4b101, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -778,6 +782,10 @@ PrefabInstance:
     - target: {fileID: 4274701501505154154, guid: 301edba3fc61f314189f3f30f5b4b101, type: 3}
       propertyPath: m_Name
       value: Vase
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640640645819259256, guid: 301edba3fc61f314189f3f30f5b4b101, type: 3}
+      propertyPath: spawnCollectible
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 301edba3fc61f314189f3f30f5b4b101, type: 3}
