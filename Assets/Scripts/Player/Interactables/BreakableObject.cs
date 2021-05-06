@@ -27,6 +27,14 @@ public class BreakableObject : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), GameManager.Instance.player.GetComponent<Collider2D>());
+        }
+    }
+
     public void Break()
     {
         Debug.Log("Break Vase");

@@ -15,6 +15,7 @@ TagManager:
   - Checkpoint
   - KillZone
   - Level Select
+  - Platform
   layers:
   - Default
   - TransparentFX
