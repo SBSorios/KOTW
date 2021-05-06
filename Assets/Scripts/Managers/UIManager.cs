@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     [Header("In Game References")]
     public GameObject inGameObjects;
     public Text timerText;
+    public GameObject infoText;
     public Image windIconCooldown;
     public Image[] hearts;
     public Image[] coins;
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     public Sprite emptyHeart;
     public Sprite fullCoin;
     public Sprite emptyCoin;
+
 
     public void Update()
     {
@@ -187,4 +189,14 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
+
+    public void ShowInfoText()
+    {
+        infoText.SetActive(true);
+    }
+
+    public void HideInfoText()
+    {
+        infoText.SetActive(false);
+    }
 }
