@@ -35,6 +35,11 @@ public class MoveableObject : MonoBehaviour
             GameManager.Instance.wc.allowWind = false;
             transform.position = startPosition;
         }
+
+        if(col.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), GameManager.Instance.player.GetComponent<Collider2D>());
+        }
     }
 
     private void FixedUpdate()
@@ -53,7 +58,12 @@ public class MoveableObject : MonoBehaviour
         {
             mousePosition = GameManager.Instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(mousePosition.x, mousePosition.y);
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             GameManager.Instance.wc.windBrush.GetComponent<CircleCollider2D>().enabled = false;
+        }
+        else
+        {
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
     }
 
