@@ -102,11 +102,11 @@ Rigidbody2D:
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7e4dc1c3c1540ef48904af458eaa5a2b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5640640645819259256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenPieces: {fileID: 1532321214417251773, guid: cda45fd6932b2fb4c8e1ec2a5fbdfe87, type: 3}
   collectible: {fileID: 2803470315454617141, guid: 400797819f5a0bd4bafd7d1e4a9feefb, type: 3}
-  spawnCollectible: 0
+  spawnCollectible: 1
 --- !u!61 &1677748644290194812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4274701501505154154}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7e4dc1c3c1540ef48904af458eaa5a2b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -160,4 +160,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc105df6cf4fff4f8d5551ea7233684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundbyte: {fileID: 0}
+  soundbyte: {fileID: 8300000, guid: 7176adbf883b96c4ca752e01dd24e244, type: 3}
