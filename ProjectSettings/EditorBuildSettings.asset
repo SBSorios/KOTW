@@ -27,8 +27,17 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level4.unity
     guid: 143644c66ff029245aad177d41e163e1
   - enabled: 1
-    path: Assets/Scenes/KatsTestArea.unity
-    guid: dc83e05f9db29254abc6a7a31890b737
+    path: Assets/Scenes/Levels/BonusLevel1.unity
+    guid: 5fe0390755179d446ac137ba26551b94
+  - enabled: 1
+    path: Assets/Scenes/Levels/BonusLevel2.unity
+    guid: 9a7995f382e10254aa7e550de8327ca2
+  - enabled: 1
+    path: Assets/Scenes/Levels/BonusLevel3.unity
+    guid: e35ce8035d50a254aa57a3be0d4cb00f
+  - enabled: 1
+    path: Assets/Scenes/Levels/BonusLevel4.unity
+    guid: ff4c4c62540b9444486cd15fbe39916f
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: fb1705a93863bc84696004dcb512224f
