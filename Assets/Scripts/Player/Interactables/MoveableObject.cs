@@ -9,9 +9,12 @@ public class MoveableObject : MonoBehaviour
     private Vector2 startPosition;
     private Vector3 mousePosition;
 
+    private Rigidbody2D rb;
+    public float moveSpeed;
     private void Awake()
     {
         startPosition = gameObject.transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -52,7 +55,8 @@ public class MoveableObject : MonoBehaviour
         if (attached)
         {
             mousePosition = GameManager.Instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(mousePosition.x, mousePosition.y);
+            Vector3 direction = (mousePosition - new Vector3(transform.position.x, transform.position.y, 0)).normalized;
+            rb.velocity = new Vector2(direction.x * moveSpeed * Time.deltaTime, direction.y * moveSpeed * Time.deltaTime);
             GameManager.Instance.wc.windBrush.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
