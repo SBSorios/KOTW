@@ -17,6 +17,7 @@ TagManager:
   - Level Select
   - Platform
   - Spawner
+  - Cloud
   layers:
   - Default
   - TransparentFX
@@ -77,6 +78,9 @@ TagManager:
     locked: 0
   - name: Interactables
     uniqueID: 2329439475
+    locked: 0
+  - name: KingFisher
+    uniqueID: 3685301341
     locked: 0
   - name: Player
     uniqueID: 1977245795
