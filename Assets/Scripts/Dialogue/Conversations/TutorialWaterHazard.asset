@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e3d2a3def95d748b8c203f467e58ff, type: 3}
+  m_Name: TutorialWaterHazard
+  m_EditorClassIdentifier: 
+  speakerLeft: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
+  speakerRight: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: Alright, alright, don't act so surprised. You ARE a God after all.
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: Don't let it get to your head though, even God's have weaknesses.
+  - character: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
+    text: ...
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: Kinda pathetic how yours is water though, just sayin'. Think I'm kidding?
+      Take a dip in this puddle and you'll see!

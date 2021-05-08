@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     public float totalScore;
     public bool timerActive;
     public bool resetTimer;
+    public bool playerStart;
 
     [Header("Save Variables")]
     public bool curLevelComplete;
@@ -95,6 +96,14 @@ public class GameManager : MonoBehaviour
             ph = player.GetComponent<PlayerHealth>();
             wc = player.GetComponent<WindController>();
             PlayerStart();
+        }
+
+        if (playerStart)
+        {
+            if (titan != null)
+            {
+                titan.SetActive(false);
+            }
         }
     }
 
