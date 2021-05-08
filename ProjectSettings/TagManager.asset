@@ -60,23 +60,23 @@ TagManager:
   - name: Water Hazard
     uniqueID: 2357381119
     locked: 0
-  - name: Foreground Map
-    uniqueID: 2033914845
-    locked: 0
   - name: Ground
     uniqueID: 15852189
     locked: 0
-  - name: Hazards
-    uniqueID: 3535033499
+  - name: Foreground Map
+    uniqueID: 2033914845
+    locked: 0
+  - name: StormTitan
+    uniqueID: 1135641601
     locked: 0
   - name: Platforms
     uniqueID: 770195243
     locked: 0
+  - name: Hazards
+    uniqueID: 3535033499
+    locked: 0
   - name: Interactables
     uniqueID: 2329439475
-    locked: 0
-  - name: StormTitan
-    uniqueID: 1135641601
     locked: 0
   - name: Player
     uniqueID: 1977245795
