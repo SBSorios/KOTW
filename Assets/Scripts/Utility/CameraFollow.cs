@@ -26,6 +26,12 @@ public class CameraFollow : MonoBehaviour
                 isChanging = true;
             }
         }
+
+        if (GameManager.Instance.playerStart)
+        {
+            target = GameManager.Instance.player.transform;
+            isChanging = true;
+        }
     }
 
     public void SwitchTarget(Transform newTarget)
@@ -42,7 +48,11 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         CheckIfPlayer();
-        CheckIfTitan();
+
+        if (!GameManager.Instance.playerStart)
+        {
+            CheckIfTitan();
+        }
 
         if (!isChanging)
         {
@@ -60,7 +70,9 @@ public class CameraFollow : MonoBehaviour
                 {
                     titanCheck = false;
                 }
-                else if (playerCheck)
+
+
+                if (playerCheck)
                 {
                     playerCheck = false;
                 }

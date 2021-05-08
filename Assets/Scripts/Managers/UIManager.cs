@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     [Header("In Game References")]
     public GameObject inGameObjects;
     public Text timerText;
+    public Text torchText;
     public GameObject infoText;
     public Image windIconCooldown;
     public Image[] hearts;

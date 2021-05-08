@@ -8,6 +8,7 @@ public class ToggleAffect : MonoBehaviour
     public GameObject reward;
     public AudioClip unlockedClip;
 
+    private int curToggled;
     private bool finishedToggling;
 
     private void Update()
@@ -16,12 +17,17 @@ public class ToggleAffect : MonoBehaviour
 
         if (AllToggled() == true && !finishedToggling)
         {
-            reward.SetActive(true);
+            if(reward != null)
+            {
+                reward.SetActive(true);
+            }
             AudioManager.Instance.PlayClip(unlockedClip);
             GameManager.Instance.curBonusUnlocked = true;
             LevelManager.Instance.SaveToCurLevel();
             finishedToggling = true;
         }
+
+        UIManager.Instance.torchText.text = "x " + toggles.Length.ToString();
     }
 
     public bool AllToggled()
