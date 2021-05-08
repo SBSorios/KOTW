@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
 
     // Choose object to spawn in the game
     public GameObject objectToSpawn;
+    public GameObject spawnerAnim;
 
    // Time variables
     public float minTime;
@@ -35,6 +36,8 @@ public class EnemySpawner : MonoBehaviour
             spawningPointsAsList.Add(child);
         }
 
+        Debug.Log(spawningPointsAsList);
+
         // Populate spawnPoints
         spawnPoints = spawningPointsAsList.ToArray();
     }
@@ -58,7 +61,8 @@ public class EnemySpawner : MonoBehaviour
         // Check if its the right time to spawn the object
         if (curTime >= spawnTime && killZone.run)
         {
-            SpawnObject();
+            //SpawnObject();
+            StartCoroutine(Spawn());
             SetRandomTime();
             curTime = 0;
         }
@@ -81,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         // Find a random index between zero and one less than the number of spawn points
         int spawnPointIndex = Random.Range(0, spawnPoints.Length);
 
-
+        
         // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation
         Instantiate(objectToSpawn, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
 
@@ -97,6 +101,18 @@ public class EnemySpawner : MonoBehaviour
         randomClip.clip = audioSources[Random.Range(0, audioSources.Length)];
         randomClip.Play();
         Debug.Log("Played Sound!");
+    }
+
+    private IEnumerator Spawn()
+    {
+        curTime = 0;
+        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+        Instantiate(spawnerAnim, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        GameObject.FindGameObjectWithTag("Spawner").transform.parent = GameObject.FindGameObjectWithTag("KillZone").transform;
+        yield return new WaitForSeconds(2);
+        Destroy(GameObject.FindGameObjectWithTag("Spawner"));
+        Instantiate(objectToSpawn, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        RandomSound();
     }
  
   

@@ -16,6 +16,7 @@ TagManager:
   - KillZone
   - Level Select
   - Platform
+  - Spawner
   layers:
   - Default
   - TransparentFX

@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private bool holdingJump;
     public LayerMask groundLayer;
 
+    [Header("Visuals and Audio")]
+    public ParticleSystem cloud;
     public AudioClip jump;
 
 
@@ -96,11 +98,13 @@ public class PlayerController : MonoBehaviour
         {
             sr.flipX = false;
             anim.SetBool("Running", true);
+            CloudDust();
         }
         else if (moveInput < 0)
         {
             sr.flipX = true;
             anim.SetBool("Running", true);
+            CloudDust();
         }
         else if(moveInput == 0)
         {
@@ -139,7 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         rb.velocity = Vector2.up * jumpForce;
 
-        //Particle FX here
+        CloudDust();
 
         if (jump != null)
         {
@@ -184,6 +188,11 @@ public class PlayerController : MonoBehaviour
             stunned = false;
             timer = stunTime;
         }
+    }
+
+    void CloudDust()
+    {
+        cloud.Play();
     }
 
 }
