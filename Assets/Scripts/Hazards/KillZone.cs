@@ -11,6 +11,7 @@ public class KillZone : MonoBehaviour
 
     [Header("Chase Variables")]
     public float speed;
+    public bool stoppedAtGate;
     public bool run;
 
 
@@ -29,7 +30,7 @@ public class KillZone : MonoBehaviour
         {
             killZone.transform.position = Vector2.MoveTowards(killZone.transform.position, endZone.transform.position, speed * Time.deltaTime);
 
-            if (killZone.transform.position.x == endZone.transform.position.x)
+            if (killZone.transform.position.x == endZone.transform.position.x && !stoppedAtGate)
             {
                 run = false;
                 killZone.SetActive(false);

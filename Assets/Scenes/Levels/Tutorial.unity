@@ -26689,6 +26689,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1253236799180828591, guid: 06e9562ceb5e8d44fb8b2ffe0546b514, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7e4dc1c3c1540ef48904af458eaa5a2b, type: 2}
+    - target: {fileID: 1253236799272341315, guid: 06e9562ceb5e8d44fb8b2ffe0546b514, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 7e4dc1c3c1540ef48904af458eaa5a2b, type: 2}
     - target: {fileID: 1253236799272341316, guid: 06e9562ceb5e8d44fb8b2ffe0546b514, type: 3}
       propertyPath: cloudPuff
       value: 

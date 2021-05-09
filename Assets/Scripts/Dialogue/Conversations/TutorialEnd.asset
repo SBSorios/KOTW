@@ -20,8 +20,13 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
     text: ...
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: 'You know you''re in the clear when you reach the mare. Hey, that almost
-      rhymed. '
+    text: Now the next levels aren't gonna be so easy, you know.
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: 'After all, you''re gonna have a huge storm monster chase you down. '
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: For my sake, I hope you can keep up. Who's gonna feed me if you get eaten?
+  - character: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
+    text: ...
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
     text: Alright, alright, I'll stop talking. Just go through this door to finally
       do your job or something.

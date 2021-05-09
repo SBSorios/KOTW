@@ -286,7 +286,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1253236799180828593}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7e4dc1c3c1540ef48904af458eaa5a2b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -356,8 +356,8 @@ MonoBehaviour:
   activeTime: 5
   sr: []
   bottomCollider: {fileID: 1253236799180828593}
-  cloudPuff: {fileID: 0}
-  cloudEnable: {fileID: 0}
+  cloudPuff: {fileID: 8300000, guid: 22232b47dc61d7f4fb04bafefc6f5a37, type: 3}
+  cloudEnable: {fileID: 8300000, guid: d677ec93f3225cb409707630b4642218, type: 3}
 --- !u!61 &1253236799272341315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -367,7 +367,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1253236799272341320}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7e4dc1c3c1540ef48904af458eaa5a2b, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0

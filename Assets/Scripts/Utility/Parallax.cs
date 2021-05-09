@@ -19,10 +19,9 @@ public class Parallax : MonoBehaviour
         target = GameManager.Instance.player.transform;
         startPOS = transform.position;
         startZ = transform.position.z;
-        
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         Vector2 newPOS = startPOS + travel * parallaxFactor;
         transform.position = new Vector3(newPOS.x, newPOS.y, startZ);
