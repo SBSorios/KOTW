@@ -16,10 +16,12 @@ MonoBehaviour:
   speakerRight: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: There's only a few things that can shut out a titan. Take the gate in front
-      of me for example.
+    text: 'Can you believe we really thought these flimsy gates could keep a titan
+      in? '
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: You'll see them all over as failed doors. How come we never learn from
+      past mistakes?
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
     text: You can lift the gate if you hover your Wind Brush over the top.
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: Just make sure it shuts behind you in time before he can get out, or we
-      might have a bigger problem!
+    text: Don't worry about shutting this one behind you, it won't stop the big bad!

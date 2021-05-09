@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     private TimeSpan timePlaying;
     public float chaseLength;
+    public float midTime;
+    public float maxTime;
     public float elapsedTime;
     public float totalScore;
     public bool timerActive;
@@ -201,11 +203,11 @@ public class GameManager : MonoBehaviour
         {
             timeScore = 33f;
         }
-        else if(elapsedTime >= chaseLength + 5)
+        else if(elapsedTime >= chaseLength + midTime)
         {
             timeScore = 16f;
         }
-        else if(elapsedTime >= chaseLength + 10)
+        else if(elapsedTime >= chaseLength + maxTime)
         {
             timeScore = 8f;
         }
