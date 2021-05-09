@@ -16,6 +16,12 @@ public class LevelSelect : MonoBehaviour
     public Image stars;
     public GameObject startButton;
     public GameObject retryButton;
+    public GameObject runImage;
+    public GameObject spikeImage;
+    public GameObject shockImage;
+    public GameObject killImage;
+    public GameObject pitfallImage;
+    public GameObject vacuumImage;
 
     private void Awake()
     {
@@ -112,11 +118,18 @@ public class LevelSelect : MonoBehaviour
     public void Tutorial()
     {
         titleText.text = "Tutorial";
-        narrativeText.text = "Basic story explained here...";
+        narrativeText.text = "Titan Threat Level: 0";
         sceneToLoad = "Tutorial";
         levelIndex = 0;
         levelMessage.SetActive(true);
         loadMessage.SetActive(false);
+
+        runImage.SetActive(false);
+        spikeImage.SetActive(false);
+        shockImage.SetActive(false);
+        killImage.SetActive(false);
+        pitfallImage.SetActive(false);
+        vacuumImage.SetActive(false);
 
         if (!SaveManager.Instance.activeSave.levelData[0].levelLoaded)
         {
@@ -139,12 +152,19 @@ public class LevelSelect : MonoBehaviour
         if (SaveManager.Instance.activeSave.levelData[0].levelComplete)
         {
             Debug.Log("Level 1 Unlocked");
-            titleText.text = "Level 1 \n The North Gate";
-            narrativeText.text = "Level 1 story explained here...";
+            titleText.text = "The North Gate";
+            narrativeText.text = "Titan Threat Level: 1";
             sceneToLoad = "Level1";
             levelIndex = 1;
             levelMessage.SetActive(true);
             loadMessage.SetActive(false);
+
+            runImage.SetActive(true);
+            spikeImage.SetActive(true);
+            shockImage.SetActive(false);
+            killImage.SetActive(false);
+            pitfallImage.SetActive(true);
+            vacuumImage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[1].levelLoaded)
             {
@@ -168,12 +188,19 @@ public class LevelSelect : MonoBehaviour
         if (SaveManager.Instance.activeSave.levelData[1].levelComplete)
         {
             Debug.Log("Level 2 Unlocked");
-            titleText.text = "Level 2 \n The West Gate";
-            narrativeText.text = "Level 2 story explained here...";
+            titleText.text = "The West Gate";
+            narrativeText.text = "Titan Threat Level: 2";
             sceneToLoad = "Level2";
             levelIndex = 2;
             levelMessage.SetActive(true);
             loadMessage.SetActive(false);
+
+            runImage.SetActive(true);
+            spikeImage.SetActive(true);
+            shockImage.SetActive(true);
+            killImage.SetActive(false);
+            pitfallImage.SetActive(true);
+            vacuumImage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[2].levelLoaded)
             {
@@ -197,12 +224,19 @@ public class LevelSelect : MonoBehaviour
         if (SaveManager.Instance.activeSave.levelData[2].levelComplete)
         {
             Debug.Log("Level 3 Unlocked");
-            titleText.text = "Level 3 \n The South Gate";
-            narrativeText.text = "Level 3 story explained here...";
+            titleText.text = "The South Gate";
+            narrativeText.text = "Titan Threat Level: 3";
             sceneToLoad = "Level3";
             levelIndex = 3;
             levelMessage.SetActive(true);
             loadMessage.SetActive(false);
+
+            runImage.SetActive(true);
+            spikeImage.SetActive(true);
+            shockImage.SetActive(true);
+            killImage.SetActive(true);
+            pitfallImage.SetActive(true);
+            vacuumImage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[3].levelLoaded)
             {
@@ -226,12 +260,19 @@ public class LevelSelect : MonoBehaviour
         if (SaveManager.Instance.activeSave.levelData[3].levelComplete)
         {
             Debug.Log("Level 4 Unlocked");
-            titleText.text = "Level 4 \n The East Gate";
-            narrativeText.text = "Level 4 story explained here...";
+            titleText.text = "The East Gate";
+            narrativeText.text = "Titan Threat Level: 4";
             sceneToLoad = "Level4";
             levelIndex = 4;
             levelMessage.SetActive(true);
             loadMessage.SetActive(false);
+
+            runImage.SetActive(true);
+            spikeImage.SetActive(true);
+            shockImage.SetActive(true);
+            killImage.SetActive(true);
+            pitfallImage.SetActive(true);
+            vacuumImage.SetActive(true);
 
             if (!SaveManager.Instance.activeSave.levelData[4].levelLoaded)
             {
@@ -262,6 +303,13 @@ public class LevelSelect : MonoBehaviour
             levelMessage.SetActive(true);
             loadMessage.SetActive(false);
 
+            runImage.SetActive(true);
+            spikeImage.SetActive(true);
+            shockImage.SetActive(false);
+            killImage.SetActive(false);
+            pitfallImage.SetActive(true);
+            vacuumImage.SetActive(false);
+
             if (!SaveManager.Instance.activeSave.levelData[5].levelLoaded)
             {
                 startButton.SetActive(true);
@@ -289,6 +337,13 @@ public class LevelSelect : MonoBehaviour
         levelMessage.SetActive(true);
         loadMessage.SetActive(false);
 
+        runImage.SetActive(true);
+        spikeImage.SetActive(true);
+        shockImage.SetActive(true);
+        killImage.SetActive(false);
+        pitfallImage.SetActive(true);
+        vacuumImage.SetActive(false);
+
         if (!SaveManager.Instance.activeSave.levelData[6].levelLoaded)
         {
             startButton.SetActive(true);
@@ -315,6 +370,14 @@ public class LevelSelect : MonoBehaviour
         levelMessage.SetActive(true);
         loadMessage.SetActive(false);
 
+        runImage.SetActive(true);
+        spikeImage.SetActive(true);
+        shockImage.SetActive(true);
+        killImage.SetActive(true);
+        pitfallImage.SetActive(true);
+        vacuumImage.SetActive(false);
+
+
         if (!SaveManager.Instance.activeSave.levelData[7].levelLoaded)
         {
             startButton.SetActive(true);
@@ -340,6 +403,13 @@ public class LevelSelect : MonoBehaviour
         levelIndex = 8;
         levelMessage.SetActive(true);
         loadMessage.SetActive(false);
+
+        runImage.SetActive(true);
+        spikeImage.SetActive(true);
+        shockImage.SetActive(true);
+        killImage.SetActive(true);
+        pitfallImage.SetActive(true);
+        vacuumImage.SetActive(true);
 
         if (!SaveManager.Instance.activeSave.levelData[8].levelLoaded)
         {

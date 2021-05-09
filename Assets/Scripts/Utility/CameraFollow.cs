@@ -40,14 +40,13 @@ public class CameraFollow : MonoBehaviour
         target = newTarget;
     }
 
-    /*private void Update()
-    {
-        CalculatePlayerDistance();
-    }*/
-
     private void Update()
     {
         CalculatePlayerDistance();
+    }
+
+    private void FixedUpdate()
+    {
         CheckIfPlayer();
 
         if (!GameManager.Instance.playerStart)

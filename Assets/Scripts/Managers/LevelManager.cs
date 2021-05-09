@@ -229,22 +229,22 @@ public class LevelManager : MonoBehaviour
 
     public void SaveLevelUnlockData()
     {
-        if (SaveManager.Instance.activeSave.levelData[0].levelComplete && SaveManager.Instance.activeSave.levelData[0].levelScore >= 33 && !level1Unlocked)
+        if (SaveManager.Instance.activeSave.levelData[0].levelComplete && !level1Unlocked)
         {
             level1Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.levelData[1].levelComplete && SaveManager.Instance.activeSave.levelData[1].levelScore >= 33 && !level2Unlocked)
+        if (SaveManager.Instance.activeSave.levelData[1].levelComplete && !level2Unlocked)
         {
             level2Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.levelData[2].levelComplete && SaveManager.Instance.activeSave.levelData[2].levelScore >= 33 && !level3Unlocked)
+        if (SaveManager.Instance.activeSave.levelData[2].levelComplete && !level3Unlocked)
         {
             level3Unlocked = true;
         }
 
-        if (SaveManager.Instance.activeSave.levelData[3].levelComplete && SaveManager.Instance.activeSave.levelData[3].levelScore >= 33 && !level4Unlocked)
+        if (SaveManager.Instance.activeSave.levelData[3].levelComplete && !level4Unlocked)
         {
             level4Unlocked = true;
         }
