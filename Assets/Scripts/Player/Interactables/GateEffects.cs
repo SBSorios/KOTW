@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GateEffects : MonoBehaviour
 {
+    public KillZone killZone;
     public AudioClip slamShut;
     public AudioClip fall;
 
@@ -16,5 +17,23 @@ public class GateEffects : MonoBehaviour
     {
         AudioManager.Instance.PlayClip(slamShut);
         Camera.main.GetComponent<CameraShake>().StartShake(1.5f, .3f);
+    }
+
+    public void StopTitan()
+    {
+        if(killZone != null)
+        {
+            if (killZone.stoppedAtGate)
+            {
+                killZone.run = false;
+                GameManager.Instance.killZone.SetActive(false);
+                GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
+                SaveManager.Instance.activeSave.savedTime = GameManager.Instance.elapsedTime;
+                GameManager.Instance.DisplayElapsedTime();
+                GameManager.Instance.EndTimer();
+                SaveManager.Instance.activeSave.activeCheckpoint = true;
+                LevelManager.Instance.SaveToCurLevel();
+            }
+        }
     }
 }
