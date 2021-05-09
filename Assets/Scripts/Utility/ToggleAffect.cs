@@ -14,7 +14,8 @@ public class ToggleAffect : MonoBehaviour
     private void Update()
     {
         AllToggled();
-
+        UIManager.Instance.torchText.text = "x " + toggles.Length.ToString();
+        Debug.Log(toggles.Length);
         if (AllToggled() == true && !finishedToggling)
         {
             if(reward != null)
@@ -26,8 +27,6 @@ public class ToggleAffect : MonoBehaviour
             LevelManager.Instance.SaveToCurLevel();
             finishedToggling = true;
         }
-
-        UIManager.Instance.torchText.text = "x " + toggles.Length.ToString();
     }
 
     public bool AllToggled()

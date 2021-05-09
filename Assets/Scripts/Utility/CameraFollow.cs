@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     private float playerDist;
 
     public Transform target;
-    private bool isChanging = false;
+    public bool isChanging = false;
     public bool playerCheck;
     public bool titanCheck;
 
@@ -40,13 +40,14 @@ public class CameraFollow : MonoBehaviour
         target = newTarget;
     }
 
+    /*private void Update()
+    {
+        CalculatePlayerDistance();
+    }*/
+
     private void Update()
     {
         CalculatePlayerDistance();
-    }
-
-    private void FixedUpdate()
-    {
         CheckIfPlayer();
 
         if (!GameManager.Instance.playerStart)
@@ -117,6 +118,27 @@ public class CameraFollow : MonoBehaviour
     private void CalculatePlayerDistance()
     {
         playerDist = Vector2.Distance(target.position, GameManager.Instance.player.transform.position);
+    }
+
+    public void ResetFollow()
+    {
+        Vector3 targetCamPos = new Vector3(target.position.x + offsets.x, transform.position.y, target.position.z + offsets.z);
+        transform.position = Vector3.MoveTowards(transform.position, targetCamPos, transitionSpeed * Time.deltaTime);
+        if (transform.position == target.position + offsets)
+        {
+            isChanging = false;
+
+            if (titanCheck)
+            {
+                titanCheck = false;
+            }
+
+
+            if (playerCheck)
+            {
+                playerCheck = false;
+            }
+        }
     }
 
 }

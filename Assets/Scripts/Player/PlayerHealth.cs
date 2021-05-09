@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
         GameManager.Instance.curLives--;
         SaveManager.Instance.activeSave.lives = GameManager.Instance.curLives;
         SaveManager.Instance.Save();
-        LevelManager.Instance.SaveToCurLevel();
+        LevelManager.Instance.SaveToCurLevel();       
 
         yield return new WaitForSeconds(.5f);
 

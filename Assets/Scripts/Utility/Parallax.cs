@@ -16,7 +16,7 @@ public class Parallax : MonoBehaviour
 
     public void Start()
     {
-        target = Camera.main.GetComponent<CameraFollow>().target;
+        target = GameManager.Instance.player.transform;
         startPOS = transform.position;
         startZ = transform.position.z;
         

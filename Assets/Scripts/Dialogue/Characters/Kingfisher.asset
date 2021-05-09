@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Kingfisher
   m_EditorClassIdentifier: 
   fullName: Kingfisher
-  portrait: {fileID: 4007518289946328533, guid: aeb6bdce36d9348439bfe3477d3fc0b9, type: 3}
+  portrait: {fileID: 21300000, guid: 51fcf5a32f5400643911661718da156c, type: 3}

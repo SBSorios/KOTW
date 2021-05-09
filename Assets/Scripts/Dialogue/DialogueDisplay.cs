@@ -47,12 +47,16 @@ public class DialogueDisplay : MonoBehaviour
         {
             DisplayLine();
             activeLineIndex += 1;
+            GameManager.Instance.pc.canMove = false;
+            GameManager.Instance.wc.canCast = false;
         }
         else
         {
             speakerUILeft.Hide();
             speakerUIRight.Hide();
             activeLineIndex = 0;
+            GameManager.Instance.pc.canMove = true;
+            GameManager.Instance.wc.canCast = true;
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCBehavior : MonoBehaviour
 {
     public GameObject sprite;
+    public GameObject goldenLight;
     public GameObject nextNPC;
     public GameObject nextNPCAnim;
     public GameObject nextNPCTrigger;
@@ -21,14 +22,15 @@ public class NPCBehavior : MonoBehaviour
         if (firstNPC)
         {
             sprite.SetActive(true);
+            goldenLight.SetActive(true);
         }
         else
         {
             sprite.SetActive(false);
-
+            goldenLight.SetActive(false);
         }
 
-        stayTime = 1;
+        stayTime = 1f;
         timer = stayTime;
     }
 
@@ -71,11 +73,13 @@ public class NPCBehavior : MonoBehaviour
         }
 
         sprite.SetActive(false);
+        goldenLight.SetActive(false);
 
-        if(nextNPC != null)
+        if (nextNPC != null)
         {
             nextNPC.SetActive(true);
             nextNPCTrigger.GetComponent<NPCBehavior>().firstNPC = true;
+            nextNPCTrigger.GetComponent<NPCBehavior>().goldenLight.SetActive(true);
             nextNPCAnim.GetComponent<Animator>().SetBool("Puff", true);
             yield return new WaitForSeconds(1f);
             nextNPCAnim.GetComponent<Animator>().SetBool("Puff", false);
@@ -88,10 +92,12 @@ public class NPCBehavior : MonoBehaviour
         yield return new WaitForSeconds(1f);
         cloudPuffAnim.GetComponent<Animator>().SetBool("Puff", false);
         sprite.SetActive(true);
+        goldenLight.SetActive(true);
 
         if(nextNPC != null)
         {
             nextNPC.SetActive(false);
+            nextNPCTrigger.GetComponent<NPCBehavior>().goldenLight.SetActive(false);
         }
     }
 

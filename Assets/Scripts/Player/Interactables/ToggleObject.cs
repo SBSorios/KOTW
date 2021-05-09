@@ -16,6 +16,7 @@ public class ToggleObject : MonoBehaviour
             {
                 toggled = true;
                 anim.SetBool("Toggled", toggled);
+                UIManager.Instance.curTorches++;
                 AudioManager.Instance.PlayClip(igniteClip);
             }
         }

@@ -7,6 +7,7 @@ public class WindController : MonoBehaviour
     [Header("Mechanic Variables")]
     public GameObject windBrush;
     public bool allowWind = true;
+    public bool canCast = true;
     public float windCooldownTime = 1f;
     private float timer = 0f;
 
@@ -18,17 +19,20 @@ public class WindController : MonoBehaviour
 
     private void WindMechanic()
     {
-        if (Input.GetMouseButton(0) && allowWind)
+        if (canCast)
         {
-            WindEnabled();
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            allowWind = false;
-        }
-        else
-        {
-            WindDisabled();
+            if (Input.GetMouseButton(0) && allowWind)
+            {
+                WindEnabled();
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                allowWind = false;
+            }
+            else
+            {
+                WindDisabled();
+            }
         }
     }
 

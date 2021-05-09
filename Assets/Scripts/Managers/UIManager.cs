@@ -33,6 +33,8 @@ public class UIManager : MonoBehaviour
     public GameObject inGameObjects;
     public Text timerText;
     public Text torchText;
+    public Text curTorchText;
+    public int curTorches;
     public GameObject infoText;
     public Image windIconCooldown;
     public Image[] hearts;
@@ -54,6 +56,7 @@ public class UIManager : MonoBehaviour
 
         DebugMenu();
         PauseMenu();
+        TorchCount();
     }
 
     public void FixedUpdate()
@@ -199,5 +202,10 @@ public class UIManager : MonoBehaviour
     public void HideInfoText()
     {
         infoText.SetActive(false);
+    }
+
+    public void TorchCount()
+    {
+        curTorchText.text = curTorches.ToString();
     }
 }

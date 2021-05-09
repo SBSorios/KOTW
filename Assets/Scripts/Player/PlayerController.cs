@@ -36,8 +36,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Jump Variables")]
     public float jumpForce;
+    public float hangTime = .2f;
+    private float hangTimer;
+    private float jumpBufferLength;
+    private float jumpBufferTimer;
     private int maxAirJump;
-    private int curAirJump;
+    public int curAirJump;
     public bool enableDoubleJump;
     private bool holdingJump;
     public LayerMask groundLayer;
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         maxAirJump = 1;
         timer = stunTime;
+        jumpBufferTimer = 0;
     }
 
     private void Update()
@@ -71,12 +76,30 @@ public class PlayerController : MonoBehaviour
         if (IsGrounded())
         {
             curAirJump = 0;
+            hangTimer = hangTime;
+        }
+        else
+        {
+            hangTimer -= Time.deltaTime;
         }
 
         if (stunned)
         {
             StunPlayer();
         }
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBufferLength = 0.1f;
+            jumpBufferTimer = jumpBufferLength;
+
+        }
+        else
+        {
+            jumpBufferTimer -= Time.deltaTime;
+        }
+
+            Debug.Log(curAirJump);
 
     }
 
@@ -119,36 +142,36 @@ public class PlayerController : MonoBehaviour
 
     void JumpController()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space))
+        if(jumpBufferTimer > 0)
         {
-            if (IsGrounded())
+            if (hangTimer > 0)
             {
                 Jump();
+                curAirJump = 1;
+                AudioManager.Instance.PlayClip(jump);
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+                if (curAirJump < maxAirJump)
                 {
-                    if (curAirJump < maxAirJump)
-                    {
-                        Jump();
-                        curAirJump++;
-                    }
+                    Jump();
+                    curAirJump++;
+                    AudioManager.Instance.PlayClip(jump);
                 }
             }
+        }
+
+        if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * .5f);
         }
     }
 
     private void Jump()
     {
         rb.velocity = Vector2.up * jumpForce;
-
         CloudDust();
-
-        if (jump != null)
-        {
-            AudioManager.Instance.PlayClip(jump);
-        }
+        jumpBufferTimer = 0;
     }
 
     public void ResetJump()
@@ -158,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float additionalHeight = .5f;
+        float additionalHeight = .35f;
         RaycastHit2D raycastHit = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, additionalHeight, groundLayer);
         Color rayColor;
         if(raycastHit.collider != null)

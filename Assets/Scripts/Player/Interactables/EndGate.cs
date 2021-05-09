@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class EndGate : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator anim;
+    public bool opened;
+
+    private void Start()
     {
-        
+        anim = gameObject.GetComponentInChildren<Animator>();
+
+        if (!SaveManager.Instance.activeSave.activeCheckpoint)
+        {
+            opened = true;
+        }
+        else
+        {
+            opened = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (opened)
+        {
+            anim.SetBool("Opened", true);
+        }
+        else
+        {
+            anim.SetBool("Opened", false);
+        }
     }
+
+
 }
