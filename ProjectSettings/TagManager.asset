@@ -58,20 +58,17 @@ TagManager:
   - name: BackgroundMap
     uniqueID: 2486020999
     locked: 0
-  - name: WaterMap
-    uniqueID: 2357381119
-    locked: 0
   - name: ForegroundMap
     uniqueID: 2033914845
+    locked: 0
+  - name: Hazards
+    uniqueID: 3535033499
     locked: 0
   - name: StormTitan
     uniqueID: 1135641601
     locked: 0
   - name: GroundMap
     uniqueID: 15852189
-    locked: 0
-  - name: Hazards
-    uniqueID: 3535033499
     locked: 0
   - name: PlatformMap
     uniqueID: 770195243
@@ -84,6 +81,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1977245795
+    locked: 0
+  - name: WaterMap
+    uniqueID: 2357381119
     locked: 0
   - name: Enemies
     uniqueID: 1473725123
