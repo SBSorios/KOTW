@@ -145,4 +145,4 @@ MonoBehaviour:
   wet: 0
   slowedSpeed: 5
   dryTime: 2
-  soundbyte: {fileID: 8300000, guid: a157052f4a6898d4fbff9eeff3fb8ecd, type: 3}
+  soundbyte: {fileID: 0}
