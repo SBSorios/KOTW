@@ -10907,6 +10907,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
+      propertyPath: maxTime
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
+      propertyPath: midTime
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
+      propertyPath: chaseLength
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: playerStart
       value: 0
       objectReference: {fileID: 0}
