@@ -5,6 +5,7 @@ using UnityEngine;
 public class WaterAffects : MonoBehaviour
 {
     public bool wet;
+    private bool inWater;
     public int slowedSpeed;
     public float dryTime;
     private float timer;
@@ -20,12 +21,28 @@ public class WaterAffects : MonoBehaviour
         WaterLogged();
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            AudioManager.Instance.PlayClip(soundbyte);
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
         {
             wet = true;
-            AudioManager.Instance.PlayClip(soundbyte);
+            inWater = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            inWater = false;
         }
     }
 
@@ -41,11 +58,14 @@ public class WaterAffects : MonoBehaviour
     {
         GameManager.Instance.pc.curSpeed = slowedSpeed;
 
-        timer -= 1 * Time.deltaTime;
-        if(timer <= 0)
+        if (!inWater)
         {
-            timer = dryTime;
-            Dry();
+            timer -= 1 * Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = dryTime;
+                Dry();
+            }
         }
     }
 

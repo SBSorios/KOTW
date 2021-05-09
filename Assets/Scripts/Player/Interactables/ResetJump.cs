@@ -10,6 +10,8 @@ public class ResetJump : MonoBehaviour
     private float timer;
     public SpriteRenderer[] sr;
     public GameObject bottomCollider;
+    public AudioClip cloudPuff;
+    public AudioClip cloudEnable;
 
     private void Start()
     {
@@ -48,6 +50,8 @@ public class ResetJump : MonoBehaviour
             sr[i].color = new Color(1, 1, 1, 1f);
         }
         bottomCollider.SetActive(true);
+        GameManager.Instance.pc.curAirJump = 0;
+        gameObject.layer = 6;
     }
 
     private void Inactive()
@@ -57,25 +61,22 @@ public class ResetJump : MonoBehaviour
             sr[i].color = new Color(1, 1, 1, .5f);
         }
         bottomCollider.SetActive(false);
+        gameObject.layer = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player" && activated)
         {
-            Debug.Log("Should Jump On Hit");
             GameManager.Instance.pc.ResetJump();
-        }
-        else if(collision.gameObject.tag == "Player" && !activated)
-        {
-            Debug.Log("Should Not Jump On Hit");
+            AudioManager.Instance.PlayClip(cloudPuff);
         }
 
         if(collision.gameObject.tag == "Cursor" && !activated)
         {
             GameManager.Instance.wc.allowWind = false;
+            AudioManager.Instance.PlayClip(cloudEnable);
             activated = true;
-            Debug.Log("Cursor");
         }
     }
 }

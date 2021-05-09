@@ -22,3 +22,6 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
     text: Well... Maybe you are, but if you fail too many times then the big bad
       escapes. And then who would feed me?!
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: Watch out for Spikes and Pitfalls like these or you'll end up saying hi
+      to Hades if you know what I mean.

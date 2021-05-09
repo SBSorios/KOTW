@@ -18,7 +18,7 @@ public class StartConversation : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             canSpeak = true;
-            UIManager.Instance.infoText.GetComponent<Text>().text = "Press F To Talk";
+            UIManager.Instance.infoText.GetComponent<Text>().text = "Press E To Talk";
             UIManager.Instance.ShowInfoText();
         }
     }
@@ -38,7 +38,7 @@ public class StartConversation : MonoBehaviour
         {
             DialogueDisplay.Instance.conversation = conversation;
             DialogueDisplay.Instance.SetSpeakers();
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 DialogueDisplay.Instance.AdvanceConversation();
                 UIManager.Instance.HideInfoText();

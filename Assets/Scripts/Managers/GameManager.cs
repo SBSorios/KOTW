@@ -97,7 +97,6 @@ public class GameManager : MonoBehaviour
             pc = player.GetComponent<PlayerController>();
             ph = player.GetComponent<PlayerHealth>();
             wc = player.GetComponent<WindController>();
-            PlayerStart();
         }
 
         if (playerStart)
@@ -108,19 +107,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    #region Positioning
-
-    public void PlayerStart()
-    {
-        //player.transform.position = startPOS.position;
-    }
-
-    public void CheckpointReset()
-    {
-        //player.transform.position = curCheckpoint.position;
-    }
-    #endregion
 
     #region Life
     public void AddLife()

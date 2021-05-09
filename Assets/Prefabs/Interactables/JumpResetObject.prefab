@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,7 +132,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,7 +214,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -314,9 +314,7 @@ GameObject:
   - component: {fileID: 1253236799272341317}
   - component: {fileID: 1253236799272341316}
   - component: {fileID: 1253236799272341315}
-  - component: {fileID: 3108286296504883004}
   - component: {fileID: 118946061}
-  - component: {fileID: 7925518310126599908}
   m_Layer: 0
   m_Name: JumpResetObject
   m_TagString: Untagged
@@ -358,6 +356,8 @@ MonoBehaviour:
   activeTime: 5
   sr: []
   bottomCollider: {fileID: 1253236799180828593}
+  cloudPuff: {fileID: 0}
+  cloudEnable: {fileID: 0}
 --- !u!61 &1253236799272341315
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -384,34 +384,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3874925, y: 0.33744258}
   m_EdgeRadius: 0
---- !u!114 &3108286296504883004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253236799272341320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc105df6cf4fff4f8d5551ea7233684, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soundbyte: {fileID: 8300000, guid: 9083f6163d8650b42b4ab5e8148afc90, type: 3}
 --- !u!114 &118946061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253236799272341320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 944cbaaaa354b954593a114977df1cb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amplitude: 0.2
-  frequency: 0.5
---- !u!114 &7925518310126599908
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

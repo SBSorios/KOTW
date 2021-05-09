@@ -7,6 +7,7 @@ public class LevelSelect : MonoBehaviour
 {
 
     public Button[] levelButtons;
+    public GameObject loadMessage;
     public GameObject levelMessage;
     public string sceneToLoad;
     public int levelIndex;
@@ -19,6 +20,7 @@ public class LevelSelect : MonoBehaviour
     private void Awake()
     {
         levelMessage.SetActive(false);
+        loadMessage.SetActive(true);
     }
 
     private void Update()
@@ -114,6 +116,7 @@ public class LevelSelect : MonoBehaviour
         sceneToLoad = "Tutorial";
         levelIndex = 0;
         levelMessage.SetActive(true);
+        loadMessage.SetActive(false);
 
         if (!SaveManager.Instance.activeSave.levelData[0].levelLoaded)
         {
@@ -141,6 +144,7 @@ public class LevelSelect : MonoBehaviour
             sceneToLoad = "Level1";
             levelIndex = 1;
             levelMessage.SetActive(true);
+            loadMessage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[1].levelLoaded)
             {
@@ -169,6 +173,7 @@ public class LevelSelect : MonoBehaviour
             sceneToLoad = "Level2";
             levelIndex = 2;
             levelMessage.SetActive(true);
+            loadMessage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[2].levelLoaded)
             {
@@ -197,6 +202,7 @@ public class LevelSelect : MonoBehaviour
             sceneToLoad = "Level3";
             levelIndex = 3;
             levelMessage.SetActive(true);
+            loadMessage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[3].levelLoaded)
             {
@@ -225,6 +231,7 @@ public class LevelSelect : MonoBehaviour
             sceneToLoad = "Level4";
             levelIndex = 4;
             levelMessage.SetActive(true);
+            loadMessage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[4].levelLoaded)
             {
@@ -253,6 +260,7 @@ public class LevelSelect : MonoBehaviour
             sceneToLoad = "BonusLevel1";
             levelIndex = 5;
             levelMessage.SetActive(true);
+            loadMessage.SetActive(false);
 
             if (!SaveManager.Instance.activeSave.levelData[5].levelLoaded)
             {
@@ -279,6 +287,7 @@ public class LevelSelect : MonoBehaviour
         sceneToLoad = "BonusLevel2";
         levelIndex = 6;
         levelMessage.SetActive(true);
+        loadMessage.SetActive(false);
 
         if (!SaveManager.Instance.activeSave.levelData[6].levelLoaded)
         {
@@ -304,6 +313,7 @@ public class LevelSelect : MonoBehaviour
         sceneToLoad = "BonusLevel3";
         levelIndex = 7;
         levelMessage.SetActive(true);
+        loadMessage.SetActive(false);
 
         if (!SaveManager.Instance.activeSave.levelData[7].levelLoaded)
         {
@@ -329,6 +339,7 @@ public class LevelSelect : MonoBehaviour
         sceneToLoad = "BonusLevel4";
         levelIndex = 8;
         levelMessage.SetActive(true);
+        loadMessage.SetActive(false);
 
         if (!SaveManager.Instance.activeSave.levelData[8].levelLoaded)
         {

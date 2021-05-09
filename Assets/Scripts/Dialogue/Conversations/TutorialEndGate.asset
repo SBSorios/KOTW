@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e3d2a3def95d748b8c203f467e58ff, type: 3}
+  m_Name: TutorialEndGate
+  m_EditorClassIdentifier: 
+  speakerLeft: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
+  speakerRight: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+  lines:
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: Welcome to new and improved Titan Stopper 300!
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: This bad boy can stop even the angriest of Wind Spirits!
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: Just make sure you hit the Golden Level with your Wind Brush AFTER you
+      walk through it.
