@@ -58,9 +58,6 @@ TagManager:
   - name: BackgroundMap
     uniqueID: 2486020999
     locked: 0
-  - name: ForegroundMap
-    uniqueID: 2033914845
-    locked: 0
   - name: Hazards
     uniqueID: 3535033499
     locked: 0
@@ -73,14 +70,17 @@ TagManager:
   - name: PlatformMap
     uniqueID: 770195243
     locked: 0
-  - name: Interactables
-    uniqueID: 2329439475
-    locked: 0
   - name: KingFisher
     uniqueID: 3685301341
     locked: 0
   - name: Player
     uniqueID: 1977245795
+    locked: 0
+  - name: Interactables
+    uniqueID: 2329439475
+    locked: 0
+  - name: ForegroundMap
+    uniqueID: 2033914845
     locked: 0
   - name: WaterMap
     uniqueID: 2357381119

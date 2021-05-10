@@ -38,8 +38,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float hangTime = .2f;
     private float hangTimer;
-    private float jumpBufferLength;
-    private float jumpBufferTimer;
+    public float jumpBufferLength;
+    public float jumpBufferTimer;
     private int maxAirJump;
     public int curAirJump;
     public bool enableDoubleJump;
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
         rb.velocity = Vector2.up * jumpForce;
         CloudDust();

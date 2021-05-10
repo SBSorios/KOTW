@@ -7,6 +7,22 @@ public class ToggleObject : MonoBehaviour
     public bool toggled;
     public Animator anim;
     public AudioClip igniteClip;
+    public GameObject dimLight;
+    public GameObject brightLight;
+
+    private void Update()
+    {
+        if (!toggled)
+        {
+            dimLight.SetActive(true);
+            brightLight.SetActive(false);
+        }
+        else
+        {
+            dimLight.SetActive(false);
+            brightLight.SetActive(true);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {

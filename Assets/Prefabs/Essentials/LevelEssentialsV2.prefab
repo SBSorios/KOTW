@@ -7508,6 +7508,8 @@ MonoBehaviour:
   conversation: {fileID: 11400000, guid: 7f837ad4b9b64fd42a35b042556b549b, type: 2}
   speakerLeft: {fileID: 788704900}
   speakerRight: {fileID: 533924319}
+  linesLeft: 0
+  inConvo: 0
 --- !u!1 &3024213606074640375
 GameObject:
   m_ObjectHideFlags: 0
@@ -10769,6 +10771,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078069134644858194, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}
+      propertyPath: maxTime
+      value: 195
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078069134644858194, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}
+      propertyPath: midTime
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078069134644858194, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}
       propertyPath: maxLives
       value: 3
       objectReference: {fileID: 0}
@@ -10782,7 +10792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7078069134644858194, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}
       propertyPath: chaseLength
-      value: 10
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7078069134644858194, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}
       propertyPath: playerStart
@@ -10910,7 +10920,7 @@ PrefabInstance:
       objectReference: {fileID: 1595200740}
     - target: {fileID: 7078069134644858198, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}
       propertyPath: m_Volume
-      value: 0.1
+      value: 0.793
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ab49a3d77dfa1442abf88344afc736a, type: 3}

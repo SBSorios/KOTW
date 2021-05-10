@@ -104,6 +104,7 @@ public class LevelManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit Game");
     }
 
     //For When The Player Completes Level Objectives

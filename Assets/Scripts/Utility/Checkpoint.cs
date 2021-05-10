@@ -7,10 +7,11 @@ public class Checkpoint : MonoBehaviour
     public GameObject unactiveStatue;
     public GameObject activeStatue;
     public Transform resetPOS;
+    public bool endGate = true;
 
-    private void Awake()
+    /*private void Awake()
     {
-        if (!SaveManager.Instance.activeSave.activeCheckpoint)
+        if (!SaveManager.Instance.activeSave.activeCheckpoint && !endGate)
         {
             unactiveStatue.SetActive(true);
             activeStatue.SetActive(false);
@@ -20,7 +21,7 @@ public class Checkpoint : MonoBehaviour
             unactiveStatue.SetActive(false);
             activeStatue.SetActive(true);
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -28,15 +29,18 @@ public class Checkpoint : MonoBehaviour
         {
             if(!SaveManager.Instance.activeSave.activeCheckpoint)
             {
-                GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
-                SaveManager.Instance.activeSave.savedTime = GameManager.Instance.elapsedTime;
-                GameManager.Instance.DisplayElapsedTime();
-                GameManager.Instance.EndTimer();
-                SaveManager.Instance.activeSave.activeCheckpoint = true;
-                LevelManager.Instance.SaveToCurLevel();
+                if (!endGate)
+                {
+                    unactiveStatue.SetActive(false);
+                    activeStatue.SetActive(true);
 
-                unactiveStatue.SetActive(false);
-                activeStatue.SetActive(true);
+                    GameManager.Instance.mainCamera.GetComponent<CameraFollow>().SwitchTarget(GameManager.Instance.player.transform);
+                    SaveManager.Instance.activeSave.savedTime = GameManager.Instance.elapsedTime;
+                    GameManager.Instance.DisplayElapsedTime();
+                    GameManager.Instance.EndTimer();
+                    SaveManager.Instance.activeSave.activeCheckpoint = true;
+                    LevelManager.Instance.SaveToCurLevel();
+                }
             }
         }
     }
