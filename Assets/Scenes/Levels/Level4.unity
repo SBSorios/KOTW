@@ -91204,15 +91204,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: maxTime
-      value: 195
+      value: 210
       objectReference: {fileID: 0}
     - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: midTime
-      value: 130
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 3024213605977621685, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
       propertyPath: chaseLength
-      value: 65
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1090fd4a51f72bc49aab84596df70daa, type: 3}
