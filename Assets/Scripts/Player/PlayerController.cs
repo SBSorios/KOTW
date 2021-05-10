@@ -99,8 +99,6 @@ public class PlayerController : MonoBehaviour
             jumpBufferTimer -= Time.deltaTime;
         }
 
-            Debug.Log(curAirJump);
-
     }
 
 

@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53e3d2a3def95d748b8c203f467e58ff, type: 3}
-  m_Name: TutorialEndGate
+  m_Name: CutsceneSlide1
   m_EditorClassIdentifier: 
-  speakerLeft: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
+  speakerLeft: {fileID: 11400000, guid: d1c28d9fdd8c3eb4590e8e6b4aed2c84, type: 2}
   speakerRight: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
   lines:
+  - character: {fileID: 11400000, guid: d1c28d9fdd8c3eb4590e8e6b4aed2c84, type: 2}
+    text: Well, well, well!
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: Welcome to new and improved Titan Stopper 300!
+    text: It's about time you woke up!
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: This bad boy can stop even the angriest of Wind Spirits!
-  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: I'll put them together at the end of each cavern exit while you keep him
-      busy.
-  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: Just make sure you hit the Golden Level with your Wind Brush AFTER you
-      walk through it.
+    text: Some jailor you are... You know the Big Bad is making quite the ruckus
+      today, right?
