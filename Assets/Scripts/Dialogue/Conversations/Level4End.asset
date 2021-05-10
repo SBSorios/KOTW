@@ -16,11 +16,12 @@ MonoBehaviour:
   speakerRight: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: Looks like you still got it, old man! Hey, only 3 more to go and we're
-      in the clear!
+    text: 'You did it, boss! All four gates are now closed! '
   - character: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
     text: ...
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: ...
+    text: Don't tell me... It's nap time?
+  - character: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
+    text: zZzZzZZZZ...
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: What'd I say?
+    text: I should've known...
