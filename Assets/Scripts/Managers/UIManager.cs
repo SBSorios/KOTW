@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     public Canvas mainCanvas;
     public GameObject debugPanel;
     public GameObject pausePanel;
+    public GameObject optionsPanel;
     public GameObject levelCompletePanel;
     private bool debugging = false;
     private bool paused = false;
@@ -207,5 +208,15 @@ public class UIManager : MonoBehaviour
     public void TorchCount()
     {
         curTorchText.text = curTorches.ToString();
+    }
+
+    public void OpenOptions()
+    {
+        optionsPanel.SetActive(true);
+    }
+
+    public void CloseOptions()
+    {
+        optionsPanel.SetActive(false);
     }
 }

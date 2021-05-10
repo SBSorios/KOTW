@@ -16,11 +16,8 @@ MonoBehaviour:
   speakerRight: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
   lines:
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: Looks like you still got it, old man! Hey, only 3 more to go and we're
-      in the clear!
+    text: Phew! How about them yellow bastards, huh?
   - character: {fileID: 11400000, guid: dcca46c76871ea84281a814037312377, type: 2}
     text: ...
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: ...
-  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
-    text: What'd I say?
+    text: Hey, don't look at me like that! I'm doing work too, you know!
