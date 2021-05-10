@@ -20,5 +20,8 @@ MonoBehaviour:
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
     text: This bad boy can stop even the angriest of Wind Spirits!
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: I'll put them together at the end of each cavern exit while you keep him
+      busy.
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
     text: Just make sure you hit the Golden Level with your Wind Brush AFTER you
       walk through it.

@@ -36,4 +36,13 @@ public class GateEffects : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "KillZone")
+        {
+            Debug.Log("Titan Escaped!");
+            LevelManager.Instance.LoadLevel("LoseScene");
+        }
+    }
 }

@@ -50,7 +50,6 @@ public class ResetJump : MonoBehaviour
             sr[i].color = new Color(1, 1, 1, 1f);
         }
         bottomCollider.SetActive(true);
-        GameManager.Instance.pc.curAirJump = 0;
         gameObject.layer = 6;
     }
 
@@ -68,7 +67,8 @@ public class ResetJump : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" && activated)
         {
-            GameManager.Instance.pc.ResetJump();
+            GameManager.Instance.pc.Jump();
+            GameManager.Instance.pc.curAirJump = 0;
             AudioManager.Instance.PlayClip(cloudPuff);
         }
 

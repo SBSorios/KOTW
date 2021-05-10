@@ -42,18 +42,20 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        CalculatePlayerDistance();
+        if (SaveManager.Instance.inGame)
+        {
+            CalculatePlayerDistance();
+            CheckIfPlayer();
+
+            if (!GameManager.Instance.playerStart)
+            {
+                CheckIfTitan();
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        CheckIfPlayer();
-
-        if (!GameManager.Instance.playerStart)
-        {
-            CheckIfTitan();
-        }
-
         if (!isChanging)
         {
             transform.position = target.position + offsets;

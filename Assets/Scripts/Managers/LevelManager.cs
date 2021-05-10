@@ -40,7 +40,19 @@ public class LevelManager : MonoBehaviour
         UIManager.Instance.LoadedNewScene();
         GameManager.Instance.LoadedNewScene();
 
-        if (scene.name == "MainMenu" || scene.name == "LevelSelect" || scene.name == "LoseScene")
+        if(scene.name == "BufferScene")
+        {
+            if (!SaveManager.Instance.hasLoaded)
+            {
+                LoadLevel("IntroCutscene");
+            }
+            else
+            {
+                LoadLevel("MainMenu");
+            }
+        }
+
+        if (scene.name == "MainMenu" || scene.name == "LevelSelect" || scene.name == "LoseScene" || scene.name == "IntroCutscene" || scene.name == "BufferScene")
         {
             UIManager.Instance.LoadedInMenus();
             SaveManager.Instance.inGame = false;
@@ -92,6 +104,7 @@ public class LevelManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit Game");
     }
 
     //For When The Player Completes Level Objectives

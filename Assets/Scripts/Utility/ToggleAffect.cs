@@ -15,7 +15,6 @@ public class ToggleAffect : MonoBehaviour
     {
         AllToggled();
         UIManager.Instance.torchText.text = "x " + toggles.Length.ToString();
-        Debug.Log(toggles.Length);
         if (AllToggled() == true && !finishedToggling)
         {
             if(reward != null)

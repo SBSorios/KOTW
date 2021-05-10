@@ -27,7 +27,14 @@ public class DialogueDisplay : MonoBehaviour
     private SpeakerUI speakerUILeft;
     private SpeakerUI speakerUIRight;
 
+    public bool linesLeft;
+    public bool inConvo;
     private int activeLineIndex = 0;
+
+    private void Update()
+    {
+
+    }
 
     private void Start()
     {
@@ -47,16 +54,24 @@ public class DialogueDisplay : MonoBehaviour
         {
             DisplayLine();
             activeLineIndex += 1;
-            GameManager.Instance.pc.canMove = false;
-            GameManager.Instance.wc.canCast = false;
+            inConvo = true;
+            if (SaveManager.Instance.inGame)
+            {
+                GameManager.Instance.pc.canMove = false;
+                GameManager.Instance.wc.canCast = false;
+            }
         }
         else
         {
             speakerUILeft.Hide();
             speakerUIRight.Hide();
             activeLineIndex = 0;
-            GameManager.Instance.pc.canMove = true;
-            GameManager.Instance.wc.canCast = true;
+            inConvo = false;
+            if (SaveManager.Instance.inGame)
+            {
+                GameManager.Instance.pc.canMove = true;
+                GameManager.Instance.wc.canCast = true;
+            }
         }
     }
 
