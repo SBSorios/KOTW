@@ -164,7 +164,7 @@ public class LevelSelect : MonoBehaviour
             shockImage.SetActive(false);
             killImage.SetActive(false);
             pitfallImage.SetActive(true);
-            vacuumImage.SetActive(false);
+            vacuumImage.SetActive(true);
 
             if (!SaveManager.Instance.activeSave.levelData[1].levelLoaded)
             {
@@ -200,7 +200,7 @@ public class LevelSelect : MonoBehaviour
             shockImage.SetActive(true);
             killImage.SetActive(false);
             pitfallImage.SetActive(true);
-            vacuumImage.SetActive(false);
+            vacuumImage.SetActive(true);
 
             if (!SaveManager.Instance.activeSave.levelData[2].levelLoaded)
             {
@@ -236,7 +236,7 @@ public class LevelSelect : MonoBehaviour
             shockImage.SetActive(true);
             killImage.SetActive(true);
             pitfallImage.SetActive(true);
-            vacuumImage.SetActive(false);
+            vacuumImage.SetActive(true);
 
             if (!SaveManager.Instance.activeSave.levelData[3].levelLoaded)
             {
@@ -297,7 +297,7 @@ public class LevelSelect : MonoBehaviour
         {
             Debug.Log("Bonus Level 1 Unlocked");
             titleText.text = "Bonus Level 1";
-            narrativeText.text = "You've Unlocked A Bonus Level!";
+            narrativeText.text = "Titan Threat Level: 1";
             sceneToLoad = "BonusLevel1";
             levelIndex = 5;
             levelMessage.SetActive(true);
@@ -308,7 +308,7 @@ public class LevelSelect : MonoBehaviour
             shockImage.SetActive(false);
             killImage.SetActive(false);
             pitfallImage.SetActive(true);
-            vacuumImage.SetActive(false);
+            vacuumImage.SetActive(true);
 
             if (!SaveManager.Instance.activeSave.levelData[5].levelLoaded)
             {
@@ -331,7 +331,7 @@ public class LevelSelect : MonoBehaviour
     {
         Debug.Log("Bonus Level 2 Unlocked");
         titleText.text = "Bonus Level 2";
-        narrativeText.text = "You've Unlocked A Bonus Level!";
+        narrativeText.text = "Titan Threat Level: 2";
         sceneToLoad = "BonusLevel2";
         levelIndex = 6;
         levelMessage.SetActive(true);
@@ -342,7 +342,7 @@ public class LevelSelect : MonoBehaviour
         shockImage.SetActive(true);
         killImage.SetActive(false);
         pitfallImage.SetActive(true);
-        vacuumImage.SetActive(false);
+        vacuumImage.SetActive(true);
 
         if (!SaveManager.Instance.activeSave.levelData[6].levelLoaded)
         {
@@ -364,7 +364,7 @@ public class LevelSelect : MonoBehaviour
     {
         Debug.Log("Bonus Level 3 Unlocked");
         titleText.text = "Bonus Level 3";
-        narrativeText.text = "You've Unlocked A Bonus Level!";
+        narrativeText.text = "Titan Threat Level: 3";
         sceneToLoad = "BonusLevel3";
         levelIndex = 7;
         levelMessage.SetActive(true);
@@ -375,7 +375,7 @@ public class LevelSelect : MonoBehaviour
         shockImage.SetActive(true);
         killImage.SetActive(true);
         pitfallImage.SetActive(true);
-        vacuumImage.SetActive(false);
+        vacuumImage.SetActive(true);
 
 
         if (!SaveManager.Instance.activeSave.levelData[7].levelLoaded)
@@ -398,7 +398,7 @@ public class LevelSelect : MonoBehaviour
     {
         Debug.Log("Bonus Level 4 Unlocked");
         titleText.text = "Bonus Level 4";
-        narrativeText.text = "You've Unlocked A Bonus Level!";
+        narrativeText.text = "Titan Threat Level: 4";
         sceneToLoad = "BonusLevel4";
         levelIndex = 8;
         levelMessage.SetActive(true);
