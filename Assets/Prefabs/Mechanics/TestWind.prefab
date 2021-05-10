@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1404288986791751111}
   - component: {fileID: 1404288986791751108}
   - component: {fileID: 1404288986791751104}
-  - component: {fileID: -8344094289654814439}
   m_Layer: 0
   m_Name: TestWind
   m_TagString: Untagged
@@ -139,44 +138,3 @@ MonoBehaviour:
   allowWind: 1
   canCast: 1
   windCooldownTime: 1
---- !u!114 &-8344094289654814439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1404288986791751105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_LightType: 3
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.462
-  m_Color: {r: 0.83766466, g: 0.9811321, b: 0.9696823, a: 1}
-  m_Intensity: 1.78
-  m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 0000000087ab2d949de2f1002b3fe82d5d0ffa12
-  m_LightCookieSprite: {fileID: 0}
-  m_UseNormalMap: 0
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_ShadowIntensity: 0
-  m_ShadowVolumeIntensity: 0
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.33
-  m_PointLightOuterRadius: 0.37
-  m_PointLightDistance: 3
-  m_PointLightQuality: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
