@@ -36,7 +36,7 @@ public class LevelSelect : MonoBehaviour
 
     public void CheckLevelUnlocked()
     {
-        if (LevelManager.Instance.level1Unlocked)
+        if (SaveManager.Instance.activeSave.level1Unlocked)
         {
             levelButtons[1].interactable = true;
         }
@@ -45,7 +45,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[1].interactable = false;
         }
 
-        if (LevelManager.Instance.level2Unlocked)
+        if (SaveManager.Instance.activeSave.level2Unlocked)
         {
             levelButtons[2].interactable = true;
         }
@@ -54,7 +54,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[2].interactable = false;
         }
 
-        if (LevelManager.Instance.level3Unlocked)
+        if (SaveManager.Instance.activeSave.level3Unlocked)
         {
             levelButtons[3].interactable = true;
         }
@@ -63,7 +63,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[3].interactable = false;
         }
 
-        if (LevelManager.Instance.level4Unlocked)
+        if (SaveManager.Instance.activeSave.level4Unlocked)
         {
             levelButtons[4].interactable = true;
         }
@@ -72,7 +72,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[4].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel1Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel1Unlocked)
         {
             levelButtons[5].interactable = true;
         }
@@ -81,7 +81,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[5].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel2Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel2Unlocked)
         {
             levelButtons[6].interactable = true;
         }
@@ -90,7 +90,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[6].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel3Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel3Unlocked)
         {
             levelButtons[7].interactable = true;
         }
@@ -99,7 +99,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[7].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel4Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel4Unlocked)
         {
             levelButtons[8].interactable = true;
         }

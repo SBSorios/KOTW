@@ -219,4 +219,16 @@ public class UIManager : MonoBehaviour
     {
         optionsPanel.SetActive(false);
     }
+
+    public void UnlockAllLevels()
+    {
+        SaveManager.Instance.activeSave.level1Unlocked = true;
+        SaveManager.Instance.activeSave.level2Unlocked = true;
+        SaveManager.Instance.activeSave.level3Unlocked = true;
+        SaveManager.Instance.activeSave.level4Unlocked = true;
+        SaveManager.Instance.activeSave.bLevel1Unlocked = true;
+        SaveManager.Instance.activeSave.bLevel2Unlocked = true;
+        SaveManager.Instance.activeSave.bLevel3Unlocked = true;
+        SaveManager.Instance.activeSave.bLevel4Unlocked = true;
+    }
 }
