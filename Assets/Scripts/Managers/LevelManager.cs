@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        SaveLevelUnlockData();
+        //SaveLevelUnlockData();
 
         if (level1Unlocked)
         {
@@ -47,17 +47,16 @@ public class LevelManager : MonoBehaviour
 
         if(scene.name == "BufferScene")
         {
-            if (!SaveManager.Instance.hasLoaded)
-            {
-                LoadLevel("IntroCutscene");
-            }
-            else
-            {
-                LoadLevel("MainMenu");
-            }
+            UIManager.Instance.fadeImage.SetActive(true);
+            StartCoroutine(UIManager.Instance.DelinquentsIntro());
+        }
+        else
+        {
+            UIManager.Instance.fadeImage.SetActive(false);
         }
 
-        if (scene.name == "MainMenu" || scene.name == "LevelSelect" || scene.name == "LoseScene" || scene.name == "IntroCutscene" || scene.name == "BufferScene" || scene.name == "WinScene")
+        if (scene.name == "MainMenu" || scene.name == "LevelSelect" || scene.name == "LoseScene" || scene.name == "IntroCutscene" || scene.name == "BufferScene" 
+            || scene.name == "WinScene" || scene.name == "CreditsScene")
         {
             UIManager.Instance.LoadedInMenus();
             SaveManager.Instance.inGame = false;
@@ -135,27 +134,26 @@ public class LevelManager : MonoBehaviour
                 SaveManager.Instance.activeSave.levelData[i].levelComplete = GameManager.Instance.curLevelComplete;
                 SaveManager.Instance.activeSave.levelData[i].bonusUnlocked = GameManager.Instance.curBonusUnlocked;
 
-                if(curLevel == "Level1" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                if(curLevel == "Level1" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].levelComplete)
                 {
-                    SaveManager.Instance.activeSave.bonusLevels[0] = true;
+                    SaveManager.Instance.activeSave.bLevel1Unlocked = true;
                 }
-                else if(curLevel == "Level2" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                else if(curLevel == "Level2" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].levelComplete)
                 {
-                    SaveManager.Instance.activeSave.bonusLevels[1] = true;
+                    SaveManager.Instance.activeSave.bLevel2Unlocked = true;
                 }
-                else if (curLevel == "Level3" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                else if (curLevel == "Level3" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].levelComplete)
                 {
-                    SaveManager.Instance.activeSave.bonusLevels[2] = true;
+                    SaveManager.Instance.activeSave.bLevel3Unlocked = true;
                 }
-                else if (curLevel == "Level4" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].activeCheckpoint)
+                else if (curLevel == "Level4" && SaveManager.Instance.activeSave.levelData[i].bonusUnlocked && SaveManager.Instance.activeSave.levelData[i].levelComplete)
                 {
-                    SaveManager.Instance.activeSave.bonusLevels[3] = true;
+                    SaveManager.Instance.activeSave.bLevel4Unlocked = true;
                 }
 
                 if (curLevel == "Tutorial" && GameManager.Instance.curLevelComplete)
                 {
                     SaveManager.Instance.activeSave.level1Unlocked = true;
-                    Debug.Log("Won");
                 }
 
                 if (curLevel == "Level1" && GameManager.Instance.curLevelComplete)
@@ -175,7 +173,7 @@ public class LevelManager : MonoBehaviour
 
                 if (curLevel == "Level4" && GameManager.Instance.curLevelComplete)
                 {
-                    //SaveManager.Instance.activeSave.level4Unlocked = true;
+                    SaveManager.Instance.activeSave.level4Unlocked = true;
                 }
 
                 

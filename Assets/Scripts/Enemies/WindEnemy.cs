@@ -5,7 +5,9 @@ using UnityEngine;
 public class WindEnemy : MonoBehaviour
 {
     
-    public float speed; 
+    public float speed;
+    public AudioClip hitPlayer;
+    public AudioClip hitEnemy;
     private Transform target;
 
     void Start()
@@ -29,12 +31,14 @@ public class WindEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             GameObject.Destroy(this.gameObject);
+            AudioManager.Instance.PlayClip(hitPlayer);
         }
 
         // If collides with cursor, destroy object
         if (collision.gameObject.tag == "Cursor")
         {
             GameObject.Destroy(this.gameObject);
+            AudioManager.Instance.PlayClip(hitEnemy);
         }
     }
 

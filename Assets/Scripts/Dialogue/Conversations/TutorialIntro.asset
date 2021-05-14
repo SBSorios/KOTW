@@ -29,3 +29,6 @@ MonoBehaviour:
     text: You'll be able to handle whatever comes at you with it down here! Hopefully...
   - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
     text: Go on, test it out on that column up ahead.
+  - character: {fileID: 11400000, guid: 395a864087c77fb4289236030a7dcc48, type: 2}
+    text: You can control it while standing on top. Try grabbing that sweet shiny
+      up there for me while you're at it!

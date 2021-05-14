@@ -50,6 +50,10 @@ public class SaveSlot : MonoBehaviour
         newGame = true;
     }
 
-
+    public void WebLink()
+    {
+        Application.OpenURL("https://kotw.netlify.app/");
+        Debug.Log("Web Button");
+    }
 
 }

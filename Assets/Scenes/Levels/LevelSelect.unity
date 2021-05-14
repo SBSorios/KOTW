@@ -2090,6 +2090,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rain
       objectReference: {fileID: 0}
+    - target: {fileID: 5520605117869745959, guid: 4d484893fae264f4fac554213fbdb074, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5520605117869745961, guid: 4d484893fae264f4fac554213fbdb074, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -4517,7 +4521,7 @@ GameObject:
   - component: {fileID: 1574293515}
   - component: {fileID: 1574293514}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UnlockLevelsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4539,8 +4543,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 231, y: -146}
-  m_SizeDelta: {x: 25, y: 25}
+  m_AnchoredPosition: {x: 231, y: -148.42}
+  m_SizeDelta: {x: 25, y: 29.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1574293514
 MonoBehaviour:

@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject optionsPanel;
     public GameObject levelCompletePanel;
+    public GameObject fadeImage;
     private bool debugging = false;
     private bool paused = false;
 
@@ -45,6 +46,13 @@ public class UIManager : MonoBehaviour
     public Sprite emptyHeart;
     public Sprite fullCoin;
     public Sprite emptyCoin;
+
+    public AudioClip evilLaugh;
+
+    private void Start()
+    {
+        infoText.SetActive(false);
+    }
 
 
     public void Update()
@@ -230,5 +238,22 @@ public class UIManager : MonoBehaviour
         SaveManager.Instance.activeSave.bLevel2Unlocked = true;
         SaveManager.Instance.activeSave.bLevel3Unlocked = true;
         SaveManager.Instance.activeSave.bLevel4Unlocked = true;
+    }
+
+
+    public IEnumerator DelinquentsIntro()
+    {
+        yield return new WaitForSeconds(.5f);
+        AudioManager.Instance.PlayClip(evilLaugh);
+        yield return new WaitForSeconds(4);
+
+        if (!SaveManager.Instance.hasLoaded)
+        {
+            LevelManager.Instance.LoadLevel("IntroCutscene");
+        }
+        else
+        {
+            LevelManager.Instance.LoadLevel("MainMenu");
+        }
     }
 }

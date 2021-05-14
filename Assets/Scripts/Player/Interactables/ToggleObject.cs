@@ -7,8 +7,11 @@ public class ToggleObject : MonoBehaviour
     public bool toggled;
     public Animator anim;
     public AudioClip igniteClip;
+    public AudioClip toggleClip;
+    public Sprite toggledSprite;
     public GameObject dimLight;
     public GameObject brightLight;
+    public bool torch = true;
 
     private void Update()
     {
@@ -30,10 +33,19 @@ public class ToggleObject : MonoBehaviour
         {
             if (!toggled)
             {
-                toggled = true;
-                anim.SetBool("Toggled", toggled);
-                UIManager.Instance.curTorches++;
-                AudioManager.Instance.PlayClip(igniteClip);
+                if (torch)
+                {
+                    toggled = true;
+                    anim.SetBool("Toggled", toggled);
+                    UIManager.Instance.curTorches++;
+                    AudioManager.Instance.PlayClip(igniteClip);
+                }
+                else
+                {
+                    toggled = true;
+                    GetComponent<SpriteRenderer>().sprite = toggledSprite;
+                    AudioManager.Instance.PlayClip(toggleClip);
+                }
             }
         }
     }
