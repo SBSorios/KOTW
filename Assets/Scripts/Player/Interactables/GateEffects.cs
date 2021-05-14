@@ -7,6 +7,8 @@ public class GateEffects : MonoBehaviour
     public KillZone killZone;
     public AudioClip slamShut;
     public AudioClip fall;
+    public AudioClip grind;
+    public bool oldGate = false;
 
     public void Fall()
     {
@@ -41,8 +43,16 @@ public class GateEffects : MonoBehaviour
     {
         if (col.gameObject.tag == "KillZone")
         {
-            Debug.Log("Titan Escaped!");
-            LevelManager.Instance.LoadLevel("LoseScene");
+            if (!oldGate)
+            {
+                LevelManager.Instance.LoadLevel("LoseScene");
+            }
         }
+    }
+
+    public void Rise()
+    {
+        AudioManager.Instance.PlayClip(grind);
+        Camera.main.GetComponent<CameraShake>().StartShake(.5f, .2f);
     }
 }

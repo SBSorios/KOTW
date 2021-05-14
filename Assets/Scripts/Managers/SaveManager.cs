@@ -126,6 +126,15 @@ public class SaveData
     public int maxCollectibles;
     public Vector3 spawnPosition;
     public bool activeCheckpoint;
+
+    public bool level1Unlocked;
+    public bool level2Unlocked;
+    public bool level3Unlocked;
+    public bool level4Unlocked;
+    public bool bLevel1Unlocked;
+    public bool bLevel2Unlocked;
+    public bool bLevel3Unlocked;
+    public bool bLevel4Unlocked;
 }
 
 [System.Serializable]

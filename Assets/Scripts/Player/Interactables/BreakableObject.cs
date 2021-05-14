@@ -6,17 +6,19 @@ public class BreakableObject : MonoBehaviour
 {
     public GameObject brokenPieces;
     public GameObject collectible;
-    public bool spawnCollectible; 
+    public GameObject collectibleLight;
+    public bool spawnCollectible;
 
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (spawnCollectible)
+        {
+            collectibleLight.SetActive(true);
+        }
+        else
+        {
+            collectibleLight.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -49,6 +51,7 @@ public class BreakableObject : MonoBehaviour
         if (spawnCollectible)
         {
             Instantiate(collectible, transform.position, Quaternion.identity);
+            collectibleLight.SetActive(false);
         }
     }
 }

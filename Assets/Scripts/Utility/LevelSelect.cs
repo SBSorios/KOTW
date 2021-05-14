@@ -36,7 +36,7 @@ public class LevelSelect : MonoBehaviour
 
     public void CheckLevelUnlocked()
     {
-        if (LevelManager.Instance.level1Unlocked)
+        if (SaveManager.Instance.activeSave.level1Unlocked)
         {
             levelButtons[1].interactable = true;
         }
@@ -45,7 +45,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[1].interactable = false;
         }
 
-        if (LevelManager.Instance.level2Unlocked)
+        if (SaveManager.Instance.activeSave.level2Unlocked)
         {
             levelButtons[2].interactable = true;
         }
@@ -54,7 +54,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[2].interactable = false;
         }
 
-        if (LevelManager.Instance.level3Unlocked)
+        if (SaveManager.Instance.activeSave.level3Unlocked)
         {
             levelButtons[3].interactable = true;
         }
@@ -63,7 +63,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[3].interactable = false;
         }
 
-        if (LevelManager.Instance.level4Unlocked)
+        if (SaveManager.Instance.activeSave.level4Unlocked)
         {
             levelButtons[4].interactable = true;
         }
@@ -72,7 +72,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[4].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel1Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel1Unlocked)
         {
             levelButtons[5].interactable = true;
         }
@@ -81,7 +81,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[5].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel2Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel2Unlocked)
         {
             levelButtons[6].interactable = true;
         }
@@ -90,7 +90,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[6].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel3Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel3Unlocked)
         {
             levelButtons[7].interactable = true;
         }
@@ -99,7 +99,7 @@ public class LevelSelect : MonoBehaviour
             levelButtons[7].interactable = false;
         }
 
-        if (LevelManager.Instance.bonusLevel4Unlocked)
+        if (SaveManager.Instance.activeSave.bLevel4Unlocked)
         {
             levelButtons[8].interactable = true;
         }
@@ -149,7 +149,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Level1()
     {
-        if (SaveManager.Instance.activeSave.levelData[0].levelComplete)
+        if (SaveManager.Instance.activeSave.level1Unlocked)
         {
             Debug.Log("Level 1 Unlocked");
             titleText.text = "The North Gate";
@@ -185,7 +185,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Level2()
     {
-        if (SaveManager.Instance.activeSave.levelData[1].levelComplete)
+        if (SaveManager.Instance.activeSave.level2Unlocked)
         {
             Debug.Log("Level 2 Unlocked");
             titleText.text = "The West Gate";
@@ -221,7 +221,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Level3()
     {
-        if (SaveManager.Instance.activeSave.levelData[2].levelComplete)
+        if (SaveManager.Instance.activeSave.level3Unlocked)
         {
             Debug.Log("Level 3 Unlocked");
             titleText.text = "The South Gate";
@@ -257,7 +257,7 @@ public class LevelSelect : MonoBehaviour
 
     public void Level4()
     {
-        if (SaveManager.Instance.activeSave.levelData[3].levelComplete)
+        if (SaveManager.Instance.activeSave.level4Unlocked)
         {
             Debug.Log("Level 4 Unlocked");
             titleText.text = "The East Gate";
@@ -293,37 +293,34 @@ public class LevelSelect : MonoBehaviour
 
     public void BonusLevel1()
     {
-        if (SaveManager.Instance.activeSave.bonusLevels[0])
+        Debug.Log("Bonus Level 1 Unlocked");
+        titleText.text = "Bonus Level 1";
+        narrativeText.text = "Titan Threat Level: 1";
+        sceneToLoad = "BonusLevel1";
+        levelIndex = 5;
+        levelMessage.SetActive(true);
+        loadMessage.SetActive(false);
+
+        runImage.SetActive(true);
+        spikeImage.SetActive(true);
+        shockImage.SetActive(false);
+        killImage.SetActive(false);
+        pitfallImage.SetActive(true);
+        vacuumImage.SetActive(true);
+
+        if (!SaveManager.Instance.activeSave.levelData[5].levelLoaded)
         {
-            Debug.Log("Bonus Level 1 Unlocked");
-            titleText.text = "Bonus Level 1";
-            narrativeText.text = "Titan Threat Level: 1";
-            sceneToLoad = "BonusLevel1";
-            levelIndex = 5;
-            levelMessage.SetActive(true);
-            loadMessage.SetActive(false);
+            startButton.SetActive(true);
+            retryButton.SetActive(false);
 
-            runImage.SetActive(true);
-            spikeImage.SetActive(true);
-            shockImage.SetActive(false);
-            killImage.SetActive(false);
-            pitfallImage.SetActive(true);
-            vacuumImage.SetActive(true);
+            stars.fillAmount = 0;
+        }
+        else
+        {
+            startButton.SetActive(false);
+            retryButton.SetActive(true);
 
-            if (!SaveManager.Instance.activeSave.levelData[5].levelLoaded)
-            {
-                startButton.SetActive(true);
-                retryButton.SetActive(false);
-
-                stars.fillAmount = 0;
-            }
-            else
-            {
-                startButton.SetActive(false);
-                retryButton.SetActive(true);
-
-                stars.fillAmount = SaveManager.Instance.activeSave.levelData[5].levelScore / 100;
-            }
+            stars.fillAmount = SaveManager.Instance.activeSave.levelData[5].levelScore / 100;
         }
     }
 

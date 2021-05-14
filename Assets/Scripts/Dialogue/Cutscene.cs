@@ -75,6 +75,7 @@ public class Cutscene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             LevelManager.Instance.LoadLevel("MainMenu");
+            Time.timeScale = 1;
         }
     }
 
